@@ -1,6 +1,6 @@
-# Modeling age-related changes in electrical activity in CA1 pyramidal cells
+## Modeling age-related changes in electrical activity in CA1 pyramidal cells
 
-### Project participants: Erin C. McKiernan<sup>1</sup>, Marco A. Herrera-Valdez<sup>2</sup>, and Diano F. Marrone<sup>3</sup>
+### Erin C. McKiernan<sup>1</sup>, Marco A. Herrera-Valdez<sup>2</sup>, and Diano F. Marrone<sup>3</sup>
 
 ##### <sup>1</sup> Departamento de Física, Facultad de Ciencias, Universidad Nacional Autónoma de México
 ##### <sup>2</sup> Departamento de Matemáticas, Facultad de Ciencias, Universidad Nacional Autónoma de México
