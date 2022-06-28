@@ -5,7 +5,7 @@
 #### Erin C. McKiernan<sup>1</sup>, Marco A. Herrera-Valdez<sup>2</sup>, and Diano F. Marrone<sup>3,4</sup>
 
 
-<sup>1 Departamento de Física, Facultad de Ciencias, Universidad Nacional Autónoma de México (UNAM)</sup><br/>
+<sup>1 Departamento de Física, Facultad de Ciencias, Universidad Nacional Autónoma de México</sup><br/>
 <sup>2 Laboratorio de Fisiología de Sistemas, Departamento de Matemáticas, Facultad de Ciencias, Universidad Nacional Autónoma de México</sup><br/>
 <sup>3 Department of Psychology, Wilfrid Laurier University</sup> <br/>
 <sup>4 McKnight Brain Institute, University of Arizona</sup> <br/>
@@ -13,7 +13,7 @@
 
 ## Overview
 
-We developed a biophysical mathematical model to study age-related changes in ion channel expression and electrical activity in pyramidal cells (PCs) of the CA1 region of the hippocampus. This repository contains Python code, a Jupyter notebook, simultation figures, and the paper arising from this project. All of the content is licensed for reuse (see license file). 
+We developed a biophysical mathematical model to study age-related changes in ion channel expression and electrical activity in pyramidal cells (PCs) of the CA1 region of the hippocampus. This repository contains Python code, a Jupyter notebook, simulation figures, and the paper arising from this project. All of the content is licensed for reuse (see license file). 
 
 For more information on this project, please see our main paper:
 
