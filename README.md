@@ -6,7 +6,7 @@
 
 
 <sup>1 Departamento de Física, Facultad de Ciencias, Universidad Nacional Autónoma de México</sup><br/>
-<sup>2 Laboratorio de Fisiología de Sistemas, Departamento de Matemáticas, Facultad de Ciencias, Universidad Nacional Autónoma de México</sup><br/>
+<sup>2 Laboratorio de Dinámica, Biofísica y Fisiología de Sistemas, Departamento de Matemáticas, Facultad de Ciencias, Universidad Nacional Autónoma de México</sup><br/>
 <sup>3 Department of Psychology, Wilfrid Laurier University</sup> <br/>
 <sup>4 McKnight Brain Institute, University of Arizona</sup> <br/>
 
@@ -17,11 +17,11 @@ We developed a biophysical mathematical model to study age-related changes in io
 
 For more information on this project, please see our main paper:
 
-McKiernan E.C., Herrera Valdez, M.A. & Marrone, D.F.. A biophysical, minimal model to investigate age-related changes in CA1 pyramidal cell electrical activity. [preprint server and DOI TBD].
+McKiernan E.C., Herrera-Valdez, M.A. & Marrone, D.F.. A biophysical, minimal model to investigate age-related changes in CA1 pyramidal cell electrical activity. [preprint server and DOI TBD].
 
 
 ## Funding 
 
-This work was supported by grants from the Natural Sciences and Engineering Research Council of Canada, as well as the Ontario Mental Health Foundation, awarded to DFM. This work was also supported by DGAPA-UNAM-PAPIIT IA209817 awarded to ECM; and DGAPA-UNAM-PAPIIT IA208618 and IN228820, and DGAPA-UNAM-PAPIME PE114919, awarded to MAH-V.
+This work was supported by grants from the Natural Sciences and Engineering Research Council of Canada, as well as the Ontario Mental Health Foundation, awarded to DFM. This work was also supported by DGAPA-UNAM-PAPIIT IA209817 awarded to ECM; and by DGAPA-UNAM-PAPIIT IA208618, DGAPA-UNAM-PAPIIT IN228820, and DGAPA-UNAM-PAPIME PE114919 awarded to MAH-V.
 
 
