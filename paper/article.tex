@@ -5,7 +5,7 @@
 \let\oldbibliography\thebibliography
 \renewcommand{\thebibliography}[1]{\oldbibliography{#1}
 \setlength{\itemsep}{0pt}} 
-\usepackage[numbers,square,sort,compress]{natbib} 
+\usepackage[numbers,square,sort,compress]{natbib}
 
 % for symbols
 \usepackage{gensymb}
@@ -20,6 +20,7 @@
 
 % long tables that run over 1pg
 \usepackage{longtable}
+\usepackage{array}
 
 % spacing in tables
 \newcommand{\midsepremove}{\aboverulesep = 0mm \belowrulesep = 0mm}
@@ -48,7 +49,7 @@
 \author[3,4]{Diano F. Marrone}
 
 \affil[1]{\small{Departamento de F\'isica, Facultad de Ciencias, Universidad Nacional Aut\'onoma de M\'exico}}
-\affil[2]{\small{Laboratorio de Fisiolog\'ia de Sistemas, Departamento de Matem\'aticas, Facultad de Ciencias, Universidad Nacional Aut\'onoma de M\'exico}}
+\affil[2]{\small{Laboratorio de Din\'amica, Biof\'isica y Fisiolog\'ia de Sistemas, Departamento de Matem\'aticas, Facultad de Ciencias, Universidad Nacional Aut\'onoma de M\'exico}}
 \affil[3]{\small{Department of Psychology, Wilfrid Laurier University}}
 \affil[4]{\small{McKnight Brain Institute, University of Arizona}}
 \affil[*]{\small{Corresponding author: emckiernan@ciencias.unam.mx}}
@@ -248,7 +249,7 @@ For the dynamics of intracellular {\Ca}, we assume recovery toward a steady stat
 \partial_t{c} = r_{c}({c_{\infty} - c}) - \tilde{k}_{c} I_{CaL}(v,c).
 \label{eq:dcdt}
 \end{equation}
-The term $\tilde{k}_c$ in equation~\eqref{eq:dcdt} is a conversion factor ($\mu$ M/pCoul) that accounts for the effect of {\Ca} flux across the membrane on the intracellular {\Ca} concentration. 
+The term $\tilde{k}_c$ in equation~\eqref{eq:dcdt} is a conversion factor ($\mu$M/pCoul) that accounts for the effect of {\Ca} flux across the membrane on the intracellular {\Ca} concentration. 
 
 The term $I_{F}$ represents a stimulus \textit{forcing} the membrane; that is, current from an electrode, or time-dependent fluctuations from the local field potential. 
 Spontaneous activity is simulated by replacing the term $I_{F}$ with a  time-dependent, Ornstein-Uhlenbeck (OU) process with amplitude $a_{F}(t)$ (pA). The mean is represented by  $\mu_{F}$ (pA) (drift term)
@@ -269,7 +270,7 @@ available \citep{rudolph2004method,destexhe2004novel}.
 To simplify the numerics, we change variables $$u = v/v_T,$$ and adjust all voltages accordingly as $$u_l = v_l/v_T, \quad l \in \left\{NaT,CaL,K,NaK,m,n,w \right\}.$$ 
 The new equation for the normalized voltage is $$\partial_t u = \frac{\partial_t v}{v_T}.$$
 To simplify the notation and reduce the number of operations during the numerical integration, we also reparametrize the amplitudes as 
-\begin{equation}A_l = \frac{2 a_l |\eta_l|}{v_T~Cm}, \label{eq:normA}
+\begin{equation}A_l = \frac{2 a_l |\eta_l|}{v_T~C_m}, \label{eq:normA}
 \end{equation} 
 for $l \in \left\{NaT,CaL,K,NaK \right\}$, in units of 1/ms. 
 Similarly,
@@ -302,7 +303,7 @@ Wherever possible, model parameters were taken from studies in rodent (mice and 
 \begin{footnotesize}
 \rowcolors{2}{white}{gray!10}
 \midsepremove
-\begin{longtable}{p{0.09\textwidth} p{0.21\textwidth} p{0.1\textwidth} p{0.1\textwidth} p{0.35\textwidth}} 
+\begin{longtable}{p{0.09\textwidth} >{\raggedright\arraybackslash}p{0.21\textwidth} p{0.1\textwidth} p{0.1\textwidth} >{\raggedright\arraybackslash}p{0.37\textwidth}} 
 \caption{Constants and parameters} \\
 \toprule
 \rowcolor{white}
@@ -317,40 +318,41 @@ Wherever possible, model parameters were taken from studies in rodent (mice and 
 $k$ & Boltzmann's constant & 1.381e$^{-20}$ & mJ/K & physical constant \cite{hille2001ion} \\
 $q$ & elementary charge & 1.602e$^{-19}$ & C & physical constant \cite{hille2001ion} \\
 $T$ & absolute temperature & 273.15 \newline + 37 & K & adjusted to mammalian body temperature of 37{\celsius} \cite{hille2001ion} \\
-$a_{NaT}$ & amplitude of \newline transient {\Na} current & 1000-2300 & pA & set to produce currents of $\sim$2-7 nA, in the range recorded in CA1 PCs from rats \citep{ketelaars2001sodium} and guinea pigs \cite{sah1988sodium} \\
-$a_{CaL}$ & amplitude of \newline L-type {\Ca} current & 25 or 50 & pA & set to produce currents of $\sim$2-3 nA or $\sim$5-6 nA as recorded in young and aged CA1 PCs, respectively \citep{campbell1996aging} \\
-$a_{DK}$ & amplitude of delayed \newline rectifier {\K} current & 6000-8000 & pA & set to produce currents of $\sim$6-9 nA, in the range recorded from HEK cells expressing rat Kv2.1 and $I_K$ in hippocampal neurons \citep{mohapatra2009regulation} \\
+$a_{NaT}$ & amplitude of transient {\Na} current & 1000-2300 & pA & set to produce currents of $\sim$2-7 nA, in range recorded in CA1 PCs from rats \citep{ketelaars2001sodium} and guinea pigs \cite{sah1988sodium} \\
+$a_{CaL}$ & amplitude of L-type {\Ca} current & 25 or 50 & pA & set to produce currents of $\sim$2-3 nA or $\sim$5-6 nA as recorded in young and aged CA1 PCs, respectively \citep{campbell1996aging} \\
+$a_{DK}$ & amplitude of delayed rectifier {\K} current & 6000-8000 & pA & set to produce currents of $\sim$6-9 nA, in range recorded from HEK cells expressing rat Kv2.1 and $I_K$ in hippocampal neurons \citep{mohapatra2009regulation} \\
 $a_{SK}$ & amplitude of {\Ca}-dependent {\K} current & 300-1600 & pA & set to produce currents of $\sim$100-800 pA, depending on {\Ca} concentration, as recorded in SK-transfected cells \cite{scuvee2004electrophysiological} \\
-$a_{NaK}$ & amplitude of {\Na}/{\K} \newline ATPase current & 10-23 & pA & set to produce currents of $\sim$?-? pA, similar to but on high end of range recorded in hippocampal PCs \cite{richards2007differential} \\
-$\eta_{x}$ & charge moved \newline across the membrane in a  single transport event  
+$a_{NaK}$ & amplitude of {\Na}/{\K} ATPase current & 10-23 & pA & set to produce currents of $\sim$70-190 pA, similar to but on high end of range recorded in hippocampal PCs \cite{richards2007differential} \\
+$\eta_{x}$ & charge moved across the membrane in a  single transport event  
 $x \in \lrSet{NaK,DK,SK}$
 &1& --& 1 net positive charge moving outward \cite{herrera2018thermodynamic} 
 \\
-$\eta_{NaT}$ & charge transported \newline across the membrane by $NaT$ channels &-1& --& 1 net positive charge moving inward \cite{herrera2018thermodynamic} 
+$\eta_{NaT}$ & charge transported across the membrane by $NaT$ channels &-1& --& 1 net positive charge moving inward \cite{herrera2018thermodynamic} 
 \\
-$\eta_{CaL}$ & charge transported \newline across the membrane by Ca channels &-2& --& 2 net positive charges moving inward  \cite{herrera2018thermodynamic}
+$\eta_{CaL}$ & charge transported across the membrane by Ca channels &-2& --& 2 net positive charges moving inward  \cite{herrera2018thermodynamic}
 \\
 $v_{Na}$ & Nernst potential for {\Na} & 60 & mV & in range reported for mammalian cells \cite{johnston1995foundations} \\
+$[Ca]_o$ & extracellular {\Ca} concentration (intracellular varies) & 1.5 & mM & in range reported for mammalian neural tissue \cite{egelman1999calcium} \\
 $v_{Ca}$ & Nernst potential for {\Ca} & variable; baseline $\sim$128 & mV & in range reported for mammalian cells \cite{johnston1995foundations}; varies since intracellular {\Ca} concentration is a model variable \\
 $v_{K}$ & Nernst potential for {\K} & -89 & mV & in range reported for mammalian cells \cite{johnston1995foundations} \\
 $v_{ATP}$ & Nernst potential for ATP & -420 & mV & value used in model of mammalian heart cells and based on fit to data \cite{endresen2000theory} \\
 $v_{NaK}$ & Nernst potential for {\Na}/{\K} ATPase & -62 & mV & calculated based on the Nernst potentials for ATP, {\Na}, and {\K}, and a 3:2 stoichiometry, respectively \citep{weer1988voltage}; $v_{NaK}=3v_{Na}-2v_{K} - v_{ATP}$ \\
-$r_{w}$ & rate of activation of \newline delayed rectifier {\K} \newline current & 1.0-1.8 & ms & 
+$r_{w}$ & rate of activation of delayed rectifier {\K} current & 1.0-1.8 & ms & 
 fit so that the duration of the action potential is approximately 2 milliseconds \citep{carter2009sodium}%in range recorded from CA1 PCs in slice \citep{martina1998functional} or hippocampal neurons in culture \cite{muller2002differential} 
 \\
 %$s_{m}$ & symmetry of time \newline constant of {\Na} current & 0.5 & - & based on voltage dependence of time constant recorded in rat CA1 PCs \citep{martina1997functional} \\
 %$s_{n}$ & symmetry of time \newline constant of {\Ca} current & 0.5 & - & based on voltage dependence of time constant recorded in guinea pig CA1 PCs \cite{kay1987calcium} \\
-$s_{w}$ & symmetry of time \newline constant of delayed \newline rectifier {\K} current & 0.3 & - & based on fit; if higher (0.5-0.7) APs are the wrong shape and do not ride on sufficient plateau potential compared to recordings \\
+$s_{w}$ & symmetry of time constant of delayed rectifier {\K} current & 0.3 & - & based on fit; if higher (0.5-0.7) APs are the wrong shape and do not ride on sufficient plateau potential compared to recordings \\
 $v_{m}$ & half-activation potential of {\Na} current & -19 & mV & in range reported for transient {\Na} channels in CA1 PCs  \citep{estacion2010sodium,gasparini2002phosphorylation,martina1997functional} \\
 $v_{n}$ & half-activation potential of {\Ca} current & 3 & mV & in range recorded for high-voltage activated {\Ca} currents in rat CA1 PCs \cite{magee1995characterization}; see also recordings from oocytes \citep{xu2001neuronal} or HEK cells \citep{balasubramanian2009optimization} expressing Ca$_v$1.2 channels \\
 $v_{w}$ & half-activation potential of delayed rectifier {\K} current & -1 & mV & in range reported for rat Kv2.1 channels expressed in COS-1 cells \cite{murakoshi1999identification} \\
-$c_{SK}$ & half-activation {\Ca} \newline concentration for SK \newline current & 740 & nM & based on recordings from oocytes expressing rat SK channel variant \citep{hirschberg1998gating,stocker20042+} \\
-$g_{m}$ & activation slope of {\Na} \newline current & 5.0 & - & in range reported for {\Na} current in mouse \cite{carter2012transient} and rat \cite{costa1996kinetic} CA1 neurons \\
-$g_{n}$ & activation slope of {\Ca} \newline current & 5.0 & - & \\
-$g_{w}$ & activation slope of \newline delayed rectifier {\K} \newline current & 3.8& - & fit to data from rat brain delayed rectifier channels \cite{vandongen1990alteration} \\
-$c_{\infty}$ & minimum intracellular {\Ca} concentration & 100 & nM & approximate resting intracellular {\Ca} \newline concentration in rat CA1 PCs \citep{oh2013altered,magee1996dihydropyridine,gant2006early} \\
-$r_{c}$ & intracellular {\Ca} \newline removal rate constant &  1e$^{-3}$ \newline to \newline 5e$^{-3}$ & ms$^{-1}$ & adjusted to produce {\Ca} dynamics as recorded in rat CA1 PCs \citep{oh2013altered} \\
-$k_{c}$ & conversion factor to \newline calculate effect of {\Ca} \newline current on intracellular {\Ca} concentration & 3e$^{-6}$ \newline to \newline 6e$^{-6}$ & nM/pCoul & adjusted to produce {\Ca} dynamics as recorded in rat CA1 PCs \citep{oh2013altered} \\
+$c_{SK}$ & half-activation {\Ca} concentration for SK current & 7.4e$^{-4}$ & mM & based on recordings from oocytes expressing rat SK channel variant \citep{hirschberg1998gating} \\
+$g_{m}$ & activation slope of {\Na} current & 5.0 & - & in range reported for {\Na} current in mouse \cite{carter2012transient} and rat \cite{costa1996kinetic} CA1 neurons \\
+$g_{n}$ & activation slope of {\Ca} current & 5.0 & - & in range reported for Ca$_v$1.2 expressed in HEK cells \cite{shin2021sites}\\
+$g_{w}$ & activation slope of delayed rectifier {\K} current & 3.8& - & fit to data from rat brain delayed rectifier channels \cite{vandongen1990alteration} \\
+$c_{\infty}$ & minimum intracellular {\Ca} concentration & 1e$^{-4}$ & mM & equivalent to 100 nM, approximate resting intracellular {\Ca} concentration in rat CA1 PCs \citep{oh2013altered,magee1996dihydropyridine,gant2006early} \\
+$r_{c}$ & intracellular {\Ca} removal rate constant &  1e$^{-3}$ \newline to \newline 5e$^{-3}$ & ms$^{-1}$ & adjusted to produce {\Ca} dynamics as recorded in rat CA1 PCs \citep{oh2013altered} \\
+$k_{c}$ & conversion factor to calculate effect of {\Ca} current on intracellular {\Ca} concentration & 3e$^{-6}$ \newline to \newline 6e$^{-6}$ & mM & adjusted to produce {\Ca} dynamics as recorded in rat CA1 PCs \citep{oh2013altered} \\
 \bottomrule 
 \rowcolor{white}
 \label{tab:params}
@@ -384,7 +386,7 @@ $k_{c}$ & 3e$^{-6}$ & 6e$^{-6}$ & 6e$^{-6}$ \\
 \end{tabular}
 \vspace{0.2cm}
 \begin{flushleft}
-\footnotesize{Original amplitudes ($a_x$) are in pA. Reparametrized amplitudes ($A_x$) in parentheses are calculated by $2*\frac{a_x}{v_T C_m}$ for $x \in \left\{NaT,DK,SK,NaK\right\}$ and $4*\frac{a_{CaL}}{v_T C_m}$ for {\Ca} channels. For all calculations, $v_T C_m$ = 668.171 mv~pF.}
+\footnotesize{Original amplitudes ($a_x$) are in pA. Reparametrized amplitudes ($A_x$) in parentheses are calculated by $2*\frac{a_x}{v_T C_m}$ for $x \in \left\{NaT,DK,SK,NaK\right\}$ and $4*\frac{a_{CaL}}{v_T C_m}$ for {\Ca} channels. For all calculations, $v_T C_m$ = 668.171 mV~pF.}
 \end{flushleft}
 \label{tab:regimes}
 \end{footnotesize}
@@ -532,7 +534,7 @@ Returning to the idea of excitability, other researchers use the term to refer t
 Overall, we believe our results highlight the importance of moving away from vague, ill-defined terms like `excitability' in favor of clearer, more precise language that describes the effect of interest (e.g., PCs spiked faster, spiked sooner, etc.). We hope in a broader sense our study will encourage neuroscientists, and particularly aging researchers, to reevaluate how they think and write about excitability.
 
 \section*{Funding} 
-This work was supported by grants from the Natural Sciences and Engineering Research Council of Canada, as well as the Ontario Mental Health Foundation, awarded to DFM. This work was also supported by DGAPA-UNAM-PAPIIT IA209817 awarded to ECM; and DGAPA-UNAM-PAPIIT IA208618 and IN228820, and DGAPA-UNAM-PAPIME PE114919, awarded to MAH-V.   
+This work was supported by grants from the Natural Sciences and Engineering Research Council of Canada, as well as the Ontario Mental Health Foundation, awarded to DFM. This work was also supported by DGAPA-UNAM-PAPIIT IA209817 awarded to ECM; and by DGAPA-UNAM-PAPIIT IA208618, DGAPA-UNAM-PAPIIT IN228820, and DGAPA-UNAM-PAPIME PE114919 awarded to MAH-V.   
  
 %\section*{Acknowledgments}  
  
