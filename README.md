@@ -1,6 +1,8 @@
 
 ## Modeling age-related changes in electrical activity of CA1 pyramidal cells
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6788230.svg)](https://doi.org/10.5281/zenodo.6788230)
+
 
 #### Erin C. McKiernan<sup>1</sup>, Marco A. Herrera-Valdez<sup>2</sup>, and Diano F. Marrone<sup>3,4</sup>
 
