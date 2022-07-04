@@ -19,7 +19,7 @@ We developed a biophysical mathematical model to study age-related changes in io
 
 For more information on this project, please see our main paper:
 
-McKiernan E.C., Herrera-Valdez, M.A. & Marrone, D.F.. A biophysical, minimal model to investigate age-related changes in CA1 pyramidal cell electrical activity. [preprint server and DOI TBD].
+McKiernan E.C., Herrera-Valdez, M.A. & Marrone, D.F.. A biophysical, minimal model to investigate age-related changes in CA1 pyramidal cell electrical activity. *bioRxiv*. [https://doi.org/10.1101/2022.07.01.498486](https://doi.org/10.1101/2022.07.01.498486).
 
 
 ## Funding 
