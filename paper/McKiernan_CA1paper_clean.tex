@@ -1,0 +1,1256 @@
+% Template for PLoS
+% Version 3.6 Aug 2022
+%
+% % % % % % % % % % % % % % % % % % % % % %
+%
+% -- IMPORTANT NOTE
+%
+% This template contains comments intended 
+% to minimize problems and delays during our production 
+% process. Please follow the template instructions
+% whenever possible.
+%
+% % % % % % % % % % % % % % % % % % % % % % % 
+%
+% Once your paper is accepted for publication, 
+% PLEASE REMOVE ALL TRACKED CHANGES in this file 
+% and leave only the final text of your manuscript. 
+% PLOS recommends the use of latexdiff to track changes during review, as this will help to maintain a clean tex file.
+% Visit https://www.ctan.org/pkg/latexdiff?lang=en for info or contact us at latex@plos.org.
+%
+%
+% There are no restrictions on package use within the LaTeX files except that no packages listed in the template may be deleted.
+%
+% Please do not include colors or graphics in the text.
+%
+% The manuscript LaTeX source should be contained within a single file (do not use \input, \externaldocument, or similar commands).
+%
+% % % % % % % % % % % % % % % % % % % % % % %
+%
+% -- FIGURES AND TABLES
+%
+% Please include tables/figure captions directly after the paragraph where they are first cited in the text.
+%
+% DO NOT INCLUDE GRAPHICS IN YOUR MANUSCRIPT
+% - Figures should be uploaded separately from your manuscript file. 
+% - Figures generated using LaTeX should be extracted and removed from the PDF before submission. 
+% - Figures containing multiple panels/subfigures must be combined into one image file before submission.
+% For figure citations, please use "Fig" instead of "Figure".
+% See http://journals.plos.org/plosone/s/figures for PLOS figure guidelines.
+%
+% Tables should be cell-based and may not contain:
+% - spacing/line breaks within cells to alter layout or alignment
+% - do not nest tabular environments (no tabular environments within tabular environments)
+% - no graphics or colored text (cell background color/shading OK)
+% See http://journals.plos.org/plosone/s/tables for table guidelines.
+%
+% For tables that exceed the width of the text column, use the adjustwidth environment as illustrated in the example table in text below.
+%
+% % % % % % % % % % % % % % % % % % % % % % % %
+%
+% -- EQUATIONS, MATH SYMBOLS, SUBSCRIPTS, AND SUPERSCRIPTS
+%
+% IMPORTANT
+% Below are a few tips to help format your equations and other special characters according to our specifications. For more tips to help reduce the possibility of formatting errors during conversion, please see our LaTeX guidelines at http://journals.plos.org/plosone/s/latex
+%
+% For inline equations, please be sure to include all portions of an equation in the math environment.  For example, x$^2$ is incorrect; this should be formatted as $x^2$ (or $\mathrm{x}^2$ if the romanized font is desired).
+%
+% Do not include text that is not math in the math environment. For example, CO2 should be written as CO\textsubscript{2} instead of CO$_2$.
+%
+% Please add line breaks to long display equations when possible in order to fit size of the column. 
+%
+% For inline equations, please do not include punctuation (commas, etc) within the math environment unless this is part of the equation.
+%
+% When adding superscript or subscripts outside of brackets/braces, please group using {}.  For example, change "[U(D,E,\gamma)]^2" to "{[U(D,E,\gamma)]}^2". 
+%
+% Do not use \cal for caligraphic font.  Instead, use \mathcal{}
+%
+% % % % % % % % % % % % % % % % % % % % % % % % 
+%
+% Please contact latex@plos.org with any questions.
+%
+% % % % % % % % % % % % % % % % % % % % % % % %
+
+\documentclass[10pt,letterpaper]{article}
+\usepackage[top=0.85in,left=2.75in,footskip=0.75in]{geometry}
+
+% amsmath and amssymb packages, useful for mathematical formulas and symbols
+\usepackage{amsmath,amssymb}
+
+% Use adjustwidth environment to exceed column width (see example table in text)
+\usepackage{changepage}
+
+% textcomp package and marvosym package for additional characters
+\usepackage{textcomp,marvosym}
+
+% cite package, to clean up citations in the main text. Do not remove.
+\usepackage{cite}
+
+% Use nameref to cite supporting information files (see Supporting Information section for more info)
+\usepackage{nameref,hyperref}
+
+% line numbers
+\usepackage[right]{lineno}
+
+% ligatures disabled
+\usepackage[nopatch=eqnum]{microtype}
+\DisableLigatures[f]{encoding = *, family = * }
+
+% color can be used to apply background shading to table cells only
+\usepackage[table]{xcolor}
+
+% array package and thick rules for tables
+\usepackage{array}
+
+% create "+" rule type for thick vertical lines
+\newcolumntype{+}{!{\vrule width 2pt}}
+
+% create \thickcline for thick horizontal lines of variable length
+\newlength\savedwidth
+\newcommand\thickcline[1]{%
+  \noalign{\global\savedwidth\arrayrulewidth\global\arrayrulewidth 2pt}%
+  \cline{#1}%
+  \noalign{\vskip\arrayrulewidth}%
+  \noalign{\global\arrayrulewidth\savedwidth}%
+}
+
+% \thickhline command for thick horizontal lines that span the table
+\newcommand\thickhline{\noalign{\global\savedwidth\arrayrulewidth\global\arrayrulewidth 2pt}%
+\hline
+\noalign{\global\arrayrulewidth\savedwidth}}
+
+% Remove comment for double spacing
+%\usepackage{setspace} 
+%\doublespacing
+
+% Text layout
+\raggedright
+\setlength{\parindent}{0.5cm}
+\textwidth 5.25in 
+\textheight 8.75in
+
+% Bold the 'Figure #' in the caption and separate it from the title/caption with a period
+% Captions will be left justified
+\usepackage[aboveskip=1pt,labelfont=bf,labelsep=period,justification=raggedright,singlelinecheck=off]{caption}
+\renewcommand{\figurename}{Fig}
+
+% Use the PLoS provided BiBTeX style
+\bibliographystyle{plos2015}
+
+% Remove brackets from numbering in List of References
+\makeatletter
+\renewcommand{\@biblabel}[1]{\quad#1.}
+\makeatother
+
+% Header and Footer with logo
+\usepackage{lastpage,fancyhdr,graphicx}
+\usepackage{epstopdf}
+%\pagestyle{myheadings}
+\pagestyle{fancy}
+\fancyhf{}
+%\setlength{\headheight}{27.023pt}
+%\lhead{\includegraphics[width=2.0in]{PLOS-submission.eps}}
+\rfoot{\thepage/\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrule}{\hrule height 2pt \vspace{2mm}}
+\fancyheadoffset[L]{2.25in}
+\fancyfootoffset[L]{2.25in}
+\lfoot{\today}
+
+%% Include all macros below
+
+% commands for ions and and math symbols
+\newcommand{\Ca}{Ca$^{2+}$}
+\newcommand{\K}{K$^{+}$}
+\newcommand{\Na}{Na$^{+}$}
+\newcommand{\lrRound}[1]{\left(#1\right)}
+\newcommand{\lrSquare}[1]{\left[#1\right]}
+\newcommand{\lrSet}[1]{\left\{#1\right\}}
+
+% packages and commands for tables
+\usepackage{booktabs}
+\usepackage{longtable}
+\renewcommand{\arraystretch}{1.5}
+
+% spacing in tables
+\newcommand{\midsepremove}{\aboverulesep = 0mm \belowrulesep = 0mm}
+\newcommand{\midsepdefault}{\aboverulesep = 0.605mm \belowrulesep = 0.984mm}
+
+% for symbols
+\usepackage{gensymb}
+
+% track changes in color
+\newcommand{\edit}[1]{\textcolor{blue}{#1}}
+
+%% END MACROS SECTION
+
+
+\begin{document}
+\vspace*{0.2in}
+
+% Title must be 250 characters or less.
+\begin{flushleft}
+{\Large
+\textbf\newline{A biophysical minimal model to investigate age-related changes in CA1 pyramidal cell electrical activity} % Please use "sentence case" for title and headings (capitalize only the first word in a title (or heading), the first word in a subtitle (or subheading), and any proper nouns).
+}
+\newline
+% Insert author names, affiliations and corresponding author email (do not include titles, positions, or degrees).
+\\
+Erin C. McKiernan \textsuperscript{1,*},
+Marco A. Herrera-Valdez \textsuperscript{2,**},
+Diano F. Marrone \textsuperscript{3,4}
+\\
+\bigskip
+\textbf{1} Departamento de F\'isica, Facultad de Ciencias, Universidad Nacional Aut\'onoma de M\'exico, Ciudad de México, CDMX, México
+\\
+\textbf{2} Laboratorio de Din\'amica, Biof\'isica y Fisiolog\'ia de Sistemas, Departamento de Matem\'aticas, Facultad de Ciencias, Universidad Nacional Aut\'onoma de M\'exico, Ciudad de México, CDMX, México
+\\
+\textbf{3} Department of Psychology, Wilfrid Laurier University, Waterloo, ON, Canada
+\\
+\textbf{4} McKnight Brain Institute, University of Arizona, Tucson, AZ, USA
+\\
+\bigskip
+
+% Use the asterisk to denote corresponding authorship and provide email address in note below. 
+% Comment from author ECM: We would like to include two corresponding authors, as below.
+*emckiernan@ciencias.unam.mx (ECM) \\
+**marcoh@ciencias.unam.mx (MAHV)
+
+\end{flushleft}
+% Please keep the abstract below 300 words
+\section*{Abstract}
+Aging is a physiological process that is still poorly understood, especially with respect to effects on the brain. There are open questions about aging that are difficult to answer with an experimental approach. Underlying challenges include  the difficulty of recording \textit{in vivo} single cell and network activity simultaneously with submillisecond  resolution, and brain compensatory mechanisms triggered by genetic, pharmacologic, or behavioral manipulations. Mathematical modeling can help address some of these questions by allowing us to fix parameters that cannot be controlled experimentally and investigate neural activity under different conditions. We present a biophysical minimal model of CA1 pyramidal cells (PCs) based on general expressions for transmembrane ion transport derived from thermodynamical principles. The model allows directly varying the contribution of ion channels by changing their number. By analyzing the dynamics of the model, we find parameter ranges that reproduce the variability in electrical activity seen in PCs. In addition, increasing the L-type {\Ca} channel expression in the model reproduces age-related changes in electrical activity that are qualitatively and quantitatively similar to those observed in PCs from aged animals. We also make predictions about age-related changes in PC bursting activity that, to our knowledge, have not been reported previously. We conclude that the model's biophysical nature, flexibility, and computational simplicity make it a potentially powerful complement to experimental studies of aging.
+
+% Author Summary not valid for PLOS ONE submissions.   
+%\section*{Author summary}
+
+\linenumbers
+
+\section*{Introduction}
+As we age, our brains undergo many changes
+\cite{oh2010learning,rosenzweig2003impact}, but we understand relatively little about these and their effects on neural function. What does normal neurophysiological aging look like and what are the various stages? How does the electrical activity of neurons change and what are the biophysics underlying those changes?  How do aging neurons respond to input from other cells? Answering these questions is not just fundamental to understanding aging as a neurophysiological process, but also to understanding how this process may be altered in age-related disorders of clinical importance such as Alzheimer's \cite{fjell2014normal} and Parkinson's \cite{rodriguez2015parkinson} disease.
+
+Many aging studies have focused on the hippocampus, an area of the brain involved in learning, memory formation, and spatial processing
+\cite{oh2010learning,rosenzweig2003impact}. Aged rats \cite{barnes1985age,gage1984spatial,caprioli1991spatial} and humans \cite{wilkniss1997age} show impaired learning of hippocampal-dependent spatial tasks. Long-term potentiation (LTP), a proposed physiological substrate of memory formation, has been investigated in the hippocampus and its induction and maintenance shown to be impaired in aged rats
+\cite{deupree1993age,rosenzweig1997role}. A short-term form of plasticity, frequency potentiation/facilitation (FP/FF), is also impaired in hippocampal pyramidal cells (PCs) from aged rats and correlates with learning deficits
+\cite{landfield1978impaired}.
+
+Plasticity changes and behavioral impairments may result in part from altered Ca$^{2+}$ signaling
+in aged neurons
+\cite{oh2010learning,rosenzweig2003impact}. Compared to CA1 PCs from young animals, PCs from aged animals show larger and longer post-burst afterhyperpolarizations (AHPs)
+\cite{landfield1984prolonged,gant2009action,power2002age}. AHPs
+are mediated by {\Ca}-dependent {\K} currents, which can act like brakes on the electrical activity of CA1 PCs
+\cite{alger1980epileptiform,hotson1980calcium}. As a result, PCs show increased spike frequency adaptation and fire fewer action potentials (APs) in response to acute stimuli or during bursting activity 
+\cite{gant2006early,moyer1992nimodipine,tombaugh2005slow}. Larger AHPs are associated with increased intracellular Ca$^{2+}$, mediated in part by {\Ca} entry via L-type channels
+\cite{campbell1996aging,moyer1992nimodipine,power2002age,thibault2001elevated}. Aged
+animals show increases in L-type channel expression and/or channel
+density at the plasma membrane
+\cite{herman1998up,thibault1996increase,veng2002regionally,nunez2014surface}.
+Animals with higher {\Ca} channel density perform poorly in spatial
+tasks  \cite{thibault1996increase}, while blockers of L-type channels can
+restore learning and plasticity in older animals
+\cite{norris1998reversal,sandin1990aging}.
+
+It is not well understood how changes in ion channel gene expression and hippocampal PC excitability may affect neuron responsiveness and microcircuit output. In part, this is due
+to challenges inherent in performing the needed experiments. Single PCs are difficult
+to access in intact animals where hippocampal microcircuit function is
+preserved. It is also difficult to tease apart the influence of the many different neurophysiological factors that change during aging. Mathematical modeling provides a means to understand more about the effects of aging on hippocampal cellular excitability by controlling factors we cannot control experimentally.
+
+Our previous work shows that mathematical expressions for different passive and active ion transport mechanisms can be derived from first principles of thermodynamics \cite{herrera2012membranes,herrera2013relating} using a common functional form \cite{herrera2018thermodynamic}. This results in a realistic representation of ionic flow across the membrane, and allows the model to reproduce phenomena such as rectification of ion currents seen in recordings. We present a model that reproduces the diversity of firing patterns in CA1 PC recordings, including adaptive firing, stimulus-induced bursting, and spontaneous bursting \cite{mckiernan2017ca1}. In addition, we reproduce several electrophysiological characteristics of aging by varying the expression of Ca$^{2+}$ channels in the model, and make predictions about bursting activity in aged CA1 PCs, which to our knowledge has not been reported. We believe this model is ideal to further study the effects of various biophysical changes in CA1 PCs during aging, as well as potentially forming the basis for biophysical, yet computationally inexpensive, network models.
+
+\section*{Materials and methods}
+
+\subsection*{Model}
+To simulate the electrical activity of CA1 PCs, we used an extended version of a two-dimensional, biophysical model previously developed and characterized by two of the present authors  \cite{herrera2012membranes,herrera2013relating,herrera2018thermodynamic}. The present model differs from our previous formulations in that it includes \Ca dynamics, i.e. it is three-dimensional, allowing for additional behaviors like bursting \cite{avron1993basic}. In addition, it is specially tuned by incorporating specific channel variants and corresponding experimental data from hippocampal PCs, as described below. The equations for the ionic currents are derived from first principles of thermodynamics. Previous modeling studies have shown that to reproduce firing behaviors such as spike frequency adaptation and bursting, the minimum number of variables is three \cite{hindmarsh1984model,avron1993basic}. 
+In particular, {\Ca} dynamics are important for producing adaptation and burst firing in CA1 PCs (for review see \cite{mckiernan2017ca1}). 
+The model dynamics are therefore described by three ordinary differential equations for the time-dependent changes in the transmembrane potential ($v$, in mV), the proportion of open {\K} channels ($w$ in [0,1]), and the intracellular {\Ca} concentration ($c$, in $\mu$M), respectively   \cite{herrera2018thermodynamic}. Based on a well-known relationship between voltage-dependent activation of delayed rectifier {\K} channels and inactivation of {\Na} channels, $w$ also represents the proportion of inactivated {\Na} channels \cite{rinzel1985excitation,avron1991minimal}.
+
+It is assumed that the membrane potential changes due to currents produced by ions transported across the membrane. We take into account currents mediated by a voltage-gated inactivating {\Na} channel ($I_{NaT}$), voltage-gated L-type {\Ca} channel ($I_{CaL}$), voltage- and {\Ca}-gated {\K} channels ($I_{DK}$ and $I_{SK}$, respectively), and a {\Na}/{\K}-ATPase ($I_{NaK}$). We also incorporate a forcing term ($I_F$), which can be used to stimulate the model PC and is explained in more detail below. The time-dependent change in membrane potential can be written as
+\begin{eqnarray}
+\label{eq:dvdt}
+C_m \partial_t v= I_{F} - I_{NaT}(v,w) - I_{CaL}(v,c) - I_{DK}(v,w) - I_{SK}(v,c) - I_{NaK}(v). 
+\end{eqnarray}
+with $\partial_t$ representing the instantaneous change with respect to time. $C_m$ (pF) is a constant representing the change in the density of charge around the membrane with respect to voltage, typically referred to as membrane capacitance in models based on electrical circuits  \cite{herrera2020nonequivalent}. Based on recordings from rat CA1 PCs, it is  assumed that $C_m=25$  pF \cite{groc2002vivo}.
+
+All the currents in Eq.~\eqref{eq:dvdt} are modeled using the same generic functional form, a product
+\begin{eqnarray}
+    I_x = a_x G_x    \varphi_x, 
+\end{eqnarray}
+ $x \in \lrSet{NaT,CaL,DK,SK,NaK}$, where $a_x$ is a whole-cell current amplitude (pA), $G_x$ is a gating term (between 0~and~1), and $\varphi_x$ is an adimensional term describing the driving force for the transmembrane flux (Table~\ref{tab:ionFluxes}). The terms $a_x= s_x N_x$, $x \in \lrSet{NaT,CaL,DK,SK,NaK}$ are whole-cell current amplitudes with
+$s_x$ (pA) representing the current flowing through a single channel (or pump), and $N_x$ representing the number of membrane proteins mediating the current (e.g. {number of {\K} channels}). Of interest, $s_x$ is $\sim$1 pA for most voltage-gated channels \cite{hille2001ion}, and is $\sim$5-10 pA for SK channels \cite{stocker20042+}.
+
+Assuming that none of the currents in the model exhibit rectification  \cite{herrera2018thermodynamic}, which agrees with recordings of the included currents, the adimensional component of the transmembrane flux can  be simplified and written as
+\begin{eqnarray}
+    \varphi_x(v) = 2\eta_x \sinh\left(\eta_x \frac{v-v_x}{2v_T}\right),
+\end{eqnarray} 
+where $\eta_x$ represents the number of charges transported across the membrane in a single transport event, and $v_x$ is the reversal potential for the current,   
+ $x \in \left\{NaT,CaL,DK,SK,NaK \right\}$. For channels, $v_x$ is the Nernst potential for the ion \cite{herrera2018thermodynamic}. Of note,  $\eta_x=1$ for $x \in \lrSet{DK,SK,NaK}$ and $\eta_{NaT}=-1$   \cite{herrera2018thermodynamic}, which gives 
+\begin{eqnarray}
+    \varphi_x(v) = 2 \sinh\left( \frac{v-v_{x}}{2v_T}\right),
+\end{eqnarray} 
+for $x \in \lrSet{NaT,DK,SK,NaK}$.
+For {\Ca} channels, the total charge transported by one ion crossing the membrane from the extracelular space is $\eta_{CaL}=-2$, so
+\begin{eqnarray}
+    \varphi_{Ca}(v) = 4 \sinh\left( \frac{v-v_{Ca}}{v_T}\right).
+\end{eqnarray} 
+
+The driving force for flux is assumed to be the same for DK and SK channels. Therefore, the label $K$ is used for both fluxes from here on.   
+The thermal potential $v_T=kT/q$ (mV), where $k$ is Boltzmann's constant (mJ/$^o$K), $T$ is the  absolute temperature ($^o$K), and $q$ is the elementary charge  (Coulombs). The Boltzmann constant can be thought of as a scaling factor between macroscopic (thermodynamic temperature) and microscopic (thermal energy) physics \cite{kalinin2005boltzmann}. The reversal potentials for the different currents depend on the  Nernst potentials for each ion, as given by 
+\begin{eqnarray}
+v_x = \frac{v_T}{z_x} \textrm{ln} \left(\frac{[x]_o}{[x]_i} \right), \quad x \in  \left\{Na,Ca,K \right\}
+\end{eqnarray}
+where $z_x$ is the ion valence and $[x]_o$ and $[x]_i$ are the ion concentrations outside and inside the cell, respectively. The reversal potential for the {\Na}/{\K}-ATPase is given by ${v_{NaK}=v_{ATP}+3v_{Na}-2v_{K}}$ \cite{herrera2018thermodynamic}. The Nernst potentials for {\Na} and {\K} are assumed to be constant, but $v_{Ca}$ varies because the intracellular {\Ca} concentration is a state variable in the model.  
+
+%TRANSPORT TABLE
+\begin{footnotesize}
+\begin{table}[ht!]
+\begin{adjustwidth}{-0.4in}{0in} % Comment out/remove adjustwidth environment if table fits in text column.
+%\centering
+\rowcolors{2}{white}{gray!10}
+\midsepremove
+\caption{\centering \textbf{Transport mechanisms included in the model}}
+\begin{tabular}{l l c l l}
+\toprule
+\rowcolor{white}
+Transport mechanism & Current & Amplitude ($a$)& Gating ($G$) & Flux $\varphi$ \\
+\toprule
+Transient {\Na} channels & $I_{NaT}(v,w)$ & $a_{Na}$ & $S_m(v) (1-w)$ & $\varphi_{Na}(v)$ \\
+L-type {\Ca} channels & $I_{CaL}(v,c)$ & $a_{Ca}$ & $S_{n}(v)$ & $ \varphi_{Ca}(v)$  \\ 
+Delayed rectifier {\K} channels& $I_{DK}(v,w)$ & $a_{DK}$ & $w$ & $\varphi_K(v)$  \\ 
+SK {\Ca}-dependent {\K} channels& $I_{SK}(v,c)$ & $a_{SK}$& $ H_{SK}(c)$ & $ \varphi_K(v)$  
+\\ 
+{\Na}/{\K} pumps & $I_{NaK}(v)$ & $a_{NaK}$& 1 & $\varphi_{NaK}(v)$ \\ 
+\bottomrule
+\rowcolor{white}
+\end{tabular}
+\label{tab:ionFluxes}
+%\vspace{0.2cm}
+\begin{flushleft}
+\footnotesize{All ion fluxes are given by a product of the form $I_x = a_x G_x \varphi_x$, where $a_x$, $G_x$, and $\varphi_x$ represent, respectively, the amplitude (normalized by membrane capacitance), gating, and driving force terms for the flux. $G_{NaK}=1$ represents saturation of the {\Na}/{\K} pumps. Note that inactivation of {\Na} channels is also represented by $w$ \cite{rinzel1985excitation,avron1991minimal}, so the proportion of non-inactivated {\Na} channels is $1-w$.}
+\end{flushleft}
+\end{adjustwidth}
+\end{table}
+\end{footnotesize}
+
+\paragraph{Gating.} 
+The auxiliary functions describing voltage-dependent activation are given by
+\begin{align}
+S_j(v) &= \frac{\textrm{exp}\left(g_j \frac{v-v_j}{v_T} \right)}{1 + \textrm{exp}\left(g_j \frac{v-v_j}{v_T} \right)}, \hspace{0.3cm} j \in \lrSet{m,n,w}, 
+\label{eq:gating}
+\end{align}
+where $g_j$ controls the steepness of the activation curve for {\Na} ($m$), {\Ca} ($n$), or DK ($w$) channels, and $v_j$ represents the half-activation voltage for those channels. 
+The function
+\begin{eqnarray}
+\label{eq:actRate}
+    R_w(v) = r_w \lrSquare{ \exp \left(b_w g_w\frac{v-v_w}{v_T}\right) + \exp \left((b_w-1)g_w\frac{v-v_w}{v_T}\right)},
+\end{eqnarray}  
+describes the voltage-dependence of the rate of activation of the DK channels. The parameters  $r_w$ and $b_w$ represent the recovery rate  and  the asymmetry in the gating relative to voltage that biases the time constant for the gating process, respectively. 
+
+The dynamics for the proportion of activated DK channels, $w$,  are assumed to be logistic,
+\begin{eqnarray}
+\label{eq:dwdt}
+\partial_t{w} = w (S_w(v)-w)  R_w(v), 
+\end{eqnarray}
+which yields better fits and is more consistent with the dynamics of activation in channel populations recorded in voltage-clamp experiments (e.g., see the activation curves in  \cite{Covarrubiasetal1991,hodgkin1952quantitative,TsunodaSalkoff1995b}).
+
+The gating of the SK channel is not voltage-dependent, but instead depends on intracellular {\Ca} binding. Its activation is modeled using a Hill equation that depends on the intracellular concentration of {\Ca}, as used to fit data from channel recordings \cite{hirschberg1998gating}:
+\begin{eqnarray}
+H_{SK}(c) = \frac{c^2}{c^2 + c_{SK}^2},
+\end{eqnarray}
+where $c_{SK}$ represents the half-activation {\Ca} concentration for the SK channels, with a reported value of 0.74 $\mu$M (740 nM) \cite{hirschberg1998gating,stocker20042+}.
+
+For the dynamics of intracellular {\Ca}, we assume recovery toward a steady state $c_{\infty}$ at a rate $r_c$, with increments caused by the {\Ca} current $I_{Ca}$ \cite{avron1991minimal},
+\begin{eqnarray}
+\partial_t{c} = r_{c}({c_{\infty} - c}) - \tilde{k}_{c} I_{CaL}(v,c).
+\label{eq:dcdt}
+\end{eqnarray}
+The term $\tilde{k}_c$ in Eq.~\eqref{eq:dcdt} is a conversion factor ($\mu$M/pCoul) that accounts for the effect of {\Ca} flux across the membrane on the intracellular {\Ca} concentration. 
+
+The term $I_{F}$ represents a stimulus \textit{forcing} the membrane; that is, current from an electrode ($I_{Stim}$), or time-dependent fluctuations from the local field potential (LFP). LFP activity is simulated by replacing the term $I_{F}$ with a  time-dependent, Ornstein-Uhlenbeck (OU) process with amplitude $a_{F}(t)$ (pA). The mean is represented by  $\mu_{F}$ (pA) (drift term)
+\cite{rudolph2003characterization} given by \cite{gillespie1996exact} 
+\begin{eqnarray}
+\label{eq:OU}
+{a}_{F}(t+\delta) &=& a_{F}(t) \lrRound{1 -  \frac{\delta}{\tau_{F}}}  +
+\lrSquare{ \mu_{F} \delta + \eta(t) ~\sqrt{d_{Stim} \delta}},
+\end{eqnarray}
+where $\delta$ is a small time step, $\tau_{F}$ is a relaxation time, and $\eta(t)$ is an independent
+white noise process with zero-mean and unit standard deviation. In our simulations, the mean is set close to the rheobase for the model PCs ($\sim$50 pA). The process has a variance
+$\sigma_{F}^2 = d_{F} \delta /2$ (pA), which means $d_{F}$ can be
+approximated if an estimation of the variance of the current $a_{F}$ is
+available \cite{rudolph2004method,destexhe2004novel}.  
+
+\paragraph{Change of variables to obtain numerical solutions.}
+To simplify the numerics, we change variables 
+\begin{eqnarray}
+    u = v/v_T, 
+\end{eqnarray}
+and adjust all voltages accordingly as 
+\begin{eqnarray}
+    u_l = v_l/v_T, \quad l \in \left\{NaT,CaL,K,NaK,m,n,w \right\}.
+\end{eqnarray}
+The new equation for the normalized voltage is 
+\begin{eqnarray}
+    \partial_t u = \frac{\partial_t v}{v_T}.
+\end{eqnarray}
+
+To simplify the notation and reduce the number of operations during the numerical integration, we also reparametrize the amplitudes as 
+\begin{eqnarray}
+\label{eq:normA}
+A_l = \frac{2 a_l |\eta_l|}{v_T~C_m}, 
+\end{eqnarray} 
+for $l \in \left\{NaT,CaL,K,NaK \right\}$, in units of 1/ms. 
+Similarly,
+the activation functions for the {\Na}, {\Ca}, and DK currents can also be rewritten respectively
+as 
+\begin{eqnarray}
+f_{\infty}(u) = \lrSet{1 + \exp\left[g_f \left(u_f-u \right) \right]}^{-1}, \quad{f \in  \left\{m,n,w \right\}}.
+\end{eqnarray}
+The result is a new equation of the form
+\begin{eqnarray}
+\partial_t u &=& J_F -A_{NaT}(1-w)m_{\infty}(u) \varphi_{Na}(u) - A_{CaL}n_{\infty}(u) \varphi_{Ca}(u,c)- \notag \\
+&& \left(A_{DK}w + A_{SK}H_{SK}(c)\right)\varphi_{K}(u)- A_{NaK}\varphi_{NaK}(u
+).
+\end{eqnarray}
+ 
+The term $J_{F}$ (1/ms) is the input current $I_F$ (pA) divided by $v_T C_m$. After the change in variables and the normalization of the current amplitudes,  Eq.~\eqref{eq:dcdt} changes to 
+\begin{eqnarray}
+\label{eq:dcdt2}
+\partial_t{c} = r_{c}({c_{\infty} - c}) - k_{c} A_{CaL}n_{\infty}(u
+) \varphi_{Ca}(u,c),
+\end{eqnarray}
+where $k_c = \tilde{k}_c v_T C_m$.
+
+\subsection*{Parameters}
+The currents were modeled to fit as closely as possible the biophysical properties of those carried by channel variants expressed in mammalian neurons, and specifically CA1 PCs, where data are available. The DK current is based on that mediated by  K$_v$2.1 channels, the predominant channel underlying the delayed rectifier current in rat hippocampal neurons \cite{murakoshi1999identification}. The L-type {\Ca} current is based on that carried by Ca$_v$1.2 (class C) channels, the predominant L-type channel isoform expressed in rat brain \cite{hell1993identification}. Additional details about the parameters can be found in Table \ref{tab:params}.
+
+Wherever possible, model parameters were taken from studies in rodent (mice and rat) hippocampal CA1 PCs. If data were not available, we obtained parameters from other types of mammalian cell, or from studies of mammalian ion channels in expression systems like \textit{Xenopus} oocyte. Physical constants and other parameters we would not expect to vary, such as the intra- and extracellular concentrations of ions or the cellular capacitance, were fixed. Biophysical properties of the ion channels, such as their half-activation voltages, were also fixed. The parameters we varied were primarily those corresponding to maximum current amplitudes, which can change acutely due to modulation or channel phosphorylation \cite{li1992functional,fadool1998modulation}, or chronically due to changes in ion channel expression that occur with age \cite{herman1998up,veng2002regionally}. 
+
+%PARAMETER TABLE
+%\begin{center}
+\begin{footnotesize}
+\rowcolors{2}{white}{gray!10}
+\midsepremove
+\begin{longtable}{l >{\raggedright\arraybackslash}p{0.22\textwidth} p{0.1\textwidth} l >{\raggedright\arraybackslash}p{0.41\textwidth}} 
+\caption{\centering Constants and parameters} \\
+\toprule
+\rowcolor{white}
+\textbf{parameter} & \textbf{description} & \textbf{value} & \textbf{units} & \textbf{reference} \\
+\toprule
+\endfirsthead
+\toprule
+\rowcolor{white}
+\textbf{parameter} & \textbf{description} & \textbf{value} & \textbf{units} & \textbf{reference} \\
+\toprule
+\endhead
+$k$ & Boltzmann's constant & 1.381e$^{-20}$ & mJ/K & physical constant \cite{hille2001ion} \\
+$q$ & elementary charge & 1.602e$^{-19}$ & C & physical constant \cite{hille2001ion} \\
+$T$ & absolute temperature & 273.15 \newline + 37 & K & adjusted to mammalian body temperature of 37{\celsius} \cite{hille2001ion} \\
+$a_{NaT}$ & amplitude of transient {\Na} current & 1000-2300 & pA & set to produce currents of $\sim$2-7 nA, in range recorded in CA1 PCs from rats \cite{ketelaars2001sodium} and guinea pigs \cite{sah1988sodium} \\
+$a_{CaL}$ & amplitude of L-type {\Ca} current & 25 or 50 & pA & set to produce currents of $\sim$2-3 nA or $\sim$5-6 nA as recorded in young and aged CA1 PCs, respectively \cite{campbell1996aging} \\
+$a_{DK}$ & amplitude of delayed rectifier {\K} current & 6000-8000 & pA & set to produce currents of $\sim$6-9 nA, in range recorded from HEK cells expressing rat Kv2.1 and $I_K$ in hippocampal neurons \cite{mohapatra2009regulation} \\
+$a_{SK}$ & amplitude of {\Ca}-dependent {\K} current & 300-1600 & pA & set to produce currents of $\sim$100-800 pA, depending on {\Ca} concentration, as recorded in SK-transfected cells \cite{scuvee2004electrophysiological} \\
+$a_{NaK}$ & amplitude of {\Na}/{\K}-ATPase current & 10-23 & pA & set to produce currents of $\sim$70-190 pA, similar to but on high end of range recorded in hippocampal PCs \cite{richards2007differential} \\
+$\eta_{x}$ & charge moved across the membrane in a  single transport event  
+$x \in \lrSet{NaK,DK,SK}$
+&1& --& 1 net positive charge moving outward \cite{herrera2018thermodynamic} 
+\\
+$\eta_{NaT}$ & charge transported across the membrane by $NaT$ channels &-1& --& 1 net positive charge moving inward \cite{herrera2018thermodynamic} 
+\\
+$\eta_{CaL}$ & charge transported across the membrane by Ca channels &-2& --& 2 net positive charges moving inward  \cite{herrera2018thermodynamic}
+\\
+$v_{Na}$ & Nernst potential for {\Na} & 60 & mV & in range reported for mammalian cells \cite{johnston1995foundations} \\
+$[Ca]_o$ & extracellular {\Ca} concentration (intracellular varies) & 1.5 & mM & in range reported for mammalian neural tissue \cite{egelman1999calcium} \\
+$v_{Ca}$ & Nernst potential for {\Ca} & variable; baseline $\sim$128 & mV & in range reported for mammalian cells \cite{johnston1995foundations}; varies since intracellular {\Ca} concentration is a model variable \\
+$v_{K}$ & Nernst potential for {\K} & -89 & mV & in range reported for mammalian cells \cite{johnston1995foundations} \\
+$v_{ATP}$ & Nernst potential for ATP & -420 & mV & value used in model of mammalian heart cells and based on fit to data \cite{endresen2000theory} \\
+$v_{NaK}$ & Nernst potential for {\Na}/{\K}-ATPase & -62 & mV & calculated based on the Nernst potentials for ATP, {\Na}, and {\K}, and a 3:2 stoichiometry, respectively \cite{weer1988voltage}; $v_{NaK}=3v_{Na}-2v_{K} - v_{ATP}$ \\
+$r_{w}$ & rate of activation of delayed rectifier {\K} current & 1.0-1.8 & ms & 
+fit so that the duration of the action potential is approximately 2 ms \cite{carter2009sodium} \\ 
+$s_{w}$ & asymmetry of time constant of delayed rectifier {\K} current & 0.3 & - & based on fit; if higher (0.5-0.7) APs are the wrong shape and do not ride on sufficient plateau potential compared to recordings \\
+$v_{m}$ & half-activation potential of {\Na} current & -19 & mV & in range reported for transient {\Na} channels in CA1 PCs  \cite{gasparini2002phosphorylation,martina1997functional} \\
+$v_{n}$ & half-activation potential of {\Ca} current & 3 & mV & in range recorded for high-voltage activated {\Ca} currents in rat CA1 PCs \cite{magee1995characterization}; see also recordings from oocytes \cite{xu2001neuronal} or HEK cells \cite{balasubramanian2009optimization} expressing Ca$_v$1.2 channels \\
+$v_{w}$ & half-activation potential of delayed rectifier {\K} current & -1 & mV & in range reported for rat Kv2.1 channels expressed in COS-1 cells \cite{murakoshi1999identification} \\
+$c_{SK}$ & half-activation {\Ca} concentration for SK current & 7.4e$^{-4}$ & mM & based on recordings from oocytes expressing rat SK channel variant \cite{hirschberg1998gating} \\
+$g_{m}$ & activation slope of {\Na} current & 5.0 & - & in range reported for {\Na} current in mouse \cite{carter2012transient} and rat \cite{costa1996kinetic} CA1 neurons \\
+$g_{n}$ & activation slope of {\Ca} current & 5.0 & - & in range reported for Ca$_v$1.2 expressed in HEK cells \cite{shin2021sites}\\
+$g_{w}$ & activation slope of delayed rectifier {\K} current & 3.8& - & fit to data from rat brain delayed rectifier channels \cite{vandongen1990alteration} \\
+$c_{\infty}$ & minimum intracellular {\Ca} concentration & 1e$^{-4}$ & mM & equivalent to 100 nM, approximate resting intracellular {\Ca} concentration in rat CA1 PCs \cite{oh2013altered,magee1996dihydropyridine,gant2006early} \\
+$r_{c}$ & intracellular {\Ca} removal rate constant &  1e$^{-3}$ \newline to \newline 5e$^{-3}$ & ms$^{-1}$ & adjusted to produce {\Ca} dynamics as recorded in rat CA1 PCs \cite{oh2013altered} \\
+$k_{c}$ & conversion factor to calculate effect of {\Ca} current on intracellular {\Ca} concentration & 3e$^{-6}$ \newline to \newline 6e$^{-6}$ & mM & adjusted to produce {\Ca} dynamics as recorded in rat CA1 PCs \cite{oh2013altered} \\
+\bottomrule 
+\rowcolor{white}
+\label{tab:params}
+\end{longtable}
+\end{footnotesize}
+%\end{center}
+
+\vspace{-0.5cm}
+
+By exploring the model through parameter variations, we were able to find parameter sets that produced different firing patterns, such as adaptive firing, conditional bursting, and spontaneous bursting. The rationale behind finding parameters for qualitatively different firing patterns that emerge in a three-dimensional model similar to this one was established by Av-Ron and colleagues \cite{avron1993basic}. For example, they show that one way to observe transitions between adaptive firing and bursting is to vary the ratio of DK to \Ca-dependent \K channels. Therefore, in our study, we began by setting the model parameters within the base physiological range given by experimental recordings in PCs, and then took into consideration the different ratios of select parameters and their effects. Once we defined these different restricted parameter ranges, we then tuned semi-manually, i.e. using Python for loops to quickly run through a series of parameter values using knowledge of how increases or decreases in specific parameters should change the firing of cells (e.g., a larger SK current leads to greater inhibition of firing, lower firing frequencies, etc.). The specific PC firing patterns are described in more detail in the Results section, but the respective parameter sets are included in Table \ref{tab:regimes} for ease of comparison.
+
+% COMPARISON PARAMETER TABLE
+\begin{table}[ht!]
+\begin{center}
+%\begin{adjustwidth}{-1.0in}{0in} % Comment out/remove adjustwidth environment if table fits in text column.
+\caption{\textbf{Parameters used to produce different firing patterns in young PC}} 
+\begin{footnotesize}
+\rowcolors{2}{white}{gray!10}
+\midsepremove
+\begin{tabular}{p{9em} p{9em}  p{9em}  p{9em}} % spaces between the widths are important
+\toprule
+\textbf{parameter} & \textbf{adaptive \newline firing} & \textbf{conditional \newline bursting} & \textbf{spontaneous bursting} \\
+\toprule
+$a_{NaT}$ ($A_{NaT}$) & 1000 (2.99) & 1300 (3.89) & 2300 (6.88) \\
+$a_{CaL}$ ($A_{CaL}$)& 25 (0.15) & 25 (0.15) & 25 (0.15) \\
+$a_{DK}$ ($A_{KD}$)& 8000 (23.95) & 6000 (17.96) & 7000 (20.95) \\
+$a_{SK}$ ($A_{SK}$)& 1400 (4.19) & 1600 (4.79) & 300 (0.90) \\
+$a_{NaK}$ ($A_{NaK}$)& 10.0 (0.03) & 13 (0.04) & 23 (0.07) \\
+$r_{w}$ & 1.0 & 1.8 & 1.1 \\
+$r_{c}$ & 1e$^{-3}$ & 5e$^{-3}$ & 5e$^{-3}$ \\
+$k_{c}$ & 3e$^{-6}$ & 6e$^{-6}$ & 6e$^{-6}$ \\
+\bottomrule 
+\end{tabular}
+%vspace{0.1cm}
+\begin{flushleft}
+\footnotesize{Original amplitudes ($a_x$) are in pA. Reparametrized amplitudes ($A_x$) in parentheses are calculated by $2*\frac{a_x}{v_T C_m}$ for $x \in \left\{NaT,DK,SK,NaK\right\}$ and $4*\frac{a_{CaL}}{v_T C_m}$ for {\Ca} channels. For all calculations, $v_T C_m$ = 668.171 mV~pF.}
+\end{flushleft}
+\end{footnotesize}
+%\end{adjustwidth}
+\label{tab:regimes}
+\end{center}
+\end{table}
+
+\subsection*{Simulations}
+All code was written in Python 3.7.4 and run on MacBook Pro laptops with 2.9 GHz Intel Core i5 processors. Simulations were performed using functions from the Python library NumPy \cite{numpyHarris2020}. Figures were produced with the Python library Matplotlib \cite{hunter2007matplotlib}. OU processes were simulated using the pyprocess package \cite{mondaca200PyProcess}.
+
+\subsection*{Resource availability}
+Resources generated by this study (code, figures, and manuscript files) are available via GitHub (\href{https://github.com/emckiernan/agingCA1}{github.com/emckiernan/agingCA1}) and archived via Zenodo (\href{https://doi.org/10.5281/zenodo.6788229}{doi.org/10.5281/zenodo.6788229}). To facilitate reuse, resources are shared under open licenses (see the license file in our GitHub repository). To promote reproducibility, Python code is embedded in a Jupyter notebook \cite{kluyver2016jupyter} that explains the code, how to use it, and how to generate all figures, including those in the Supporting Information.
+
+\subsection*{Study design}
+While aged cells display a number of biophysical changes, we focused on their {\Ca} channel expression. Aged CA1 PCs show an increase in the number of functional transmembrane L-type {\Ca} channels  \cite{herman1998up,thibault1996increase,veng2002regionally}. In particular, CA1 PCs from aged rats have increased expression of Ca$_v$1.2 at the plasma membrane \cite{nunez2014surface}. With these results in mind, we decided to simulate one aspect of aging by changing the number of Ca$_v$1.2 channels in our model membrane. We asked the question, is a change in Ca$_v$1.2 expression sufficient to reproduce the various changes in excitability, such as increased spike frequency adaptation, observed experimentally in aged CA1 PCs? In addition, CA1 PCs are known to burst \cite{mckiernan2017ca1}, but we are not aware of studies comparing their bursting patterns in young versus aged animals. Therefore, we used our model to also investigate the effects of altered Ca$_v$1.2 channel expression on bursting activity. In all the following simulations, once the models have been tuned to a specific firing pattern, young and aged model PCs (hereafter referred to as yPC and aPC, respectively) are identical with respect to every parameter except the maximum amplitude of their L-type {\Ca} current, which is set to produce currents of $\sim$2-3 nA or $\sim$5-6 nA to match the magnitude of currents seen in recordings of CA1 PCs from young and aged animals, respectively \cite{campbell1996aging}. 
+
+\section*{Results}
+CA1 PCs display diverse firing patterns, ranging from repetitive adaptive spiking to stimulus-induced or spontaneous bursting (for review see \cite{mckiernan2017ca1}). Thus, to represent these cells, our model must reproduce this diversity, as well as age-related effects on firing reported in the literature.  
+
+\subsection*{Modeling age-related changes in spike frequency adaptation}
+Many CA1 PCs respond to square-pulse current injection by firing several early spikes followed by adaptation which slows the frequency of firing \cite{gant2006early,gu2008sk,moyer1992nimodipine}. To generate this firing pattern, we set the ionic currents to be the same amplitude range as observed in recordings of young adult CA1 PCs, with amplitudes for the {\Na} and {\Ca} currents at $\sim$2-3 nA, the DK current approximately double the inward cationic currents, and the SK current at $\sim$400-700 pA, depending on the intracellular {\Ca} concentration (see Tables \ref{tab:params} and \ref{tab:regimes}). This balance of ionic currents successfully generates adaptive firing similar to recordings (Fig.~\ref{fig:adapt}A and \nameref{S2_Fig}).
+
+\begin{figure}[h!]
+\centering
+%\includegraphics[width=0.8\textwidth]{figures/Fig1.TIFF}
+\caption{{\bf Adaptive firing in model PCs.}
+(A.) Adaptive firing in the yPC (solid black traces) versus aPC (dashed red traces) in response to a 800 ms 150 pA square-pulse stimulation shown in (E.). Corresponding {\Ca} currents, intracellular {\Ca} concentration, and SK currents are shown in (B.), (C.), and (D.), respectively. Parameters for yPC: $a_{NaT}=1000$, $a_{CaL}=25$, $a_{DK}=8000$, $a_{SK}=1400$, $r_{w}=1.0$, $r_{c}=1e^{-3}$, and $k_{c}=3e^{-6}$. All parameters for aPC the same except $a_{CaL}=50$. Parameter units, and additional parameters kept constant for all simulations, are in Table \ref{tab:params}.}
+\label{fig:adapt}
+\end{figure}
+
+Studies show that adaptation is more pronounced in aged than young animal cells, leading to a shorter initial period of fast spiking, followed by fewer spikes or complete cessation of firing \cite{disterhoft1996calcium,gant2006early,moyer1992nimodipine,tombaugh2005slow}. To compare the young (yPC) and aged (aPC) model cells, all parameters were fixed except for the maximum amplitude of the L-type {\Ca} current, which was set to produce currents of $\sim$2-3~nA (young) or $\sim$5-6~nA (aged), based on recordings \cite{campbell1996aging}. This difference in the {\Ca} current causes the rate of firing in the first $\sim$100 ms (early firing) to decrease from 60 Hz in the yPC to 40 Hz in the aPC (Fig.~\ref{fig:adapt}A and \nameref{S4_Fig}A). Firing for the remaining stimulation time (late firing) is also affected, decreasing from $\sim$6 Hz to $\sim$3 Hz in the yPC versus aPC, respectively (Fig.~\ref{fig:adapt}A and \nameref{S4_Fig}B). The effect and frequencies are similar to those seen in recordings of CA1 PCs in young and old rabbits \cite{moyer1992nimodipine}.
+
+Examining the {\Ca} and SK dynamics during the response reveals the mechanisms underlying the stronger adaptation in the aPC (Fig. \ref{fig:adapt}B-D). The first two spikes occur nearly simultaneously in the two model cells. However, the larger increase in intracellular {\Ca} in the aPC induces a larger SK current, which in turn slows the cell's firing. The aPC falls behind the yPC by the third spike, and then slows its firing further as the response continues.
+
+\subsection*{Modeling age-related changes in AHPs}
+
+AHP generation has been studied in CA1 PCs \cite{storm1989after}, particularly in the context of aging  \cite{disterhoft1996calcium,gant2006early,matthews2009fast,moyer1992nimodipine}. To induce AHPs, we kept the same parameters as in the previous simulations. We then stimulated model PCs with a 100 ms square pulse of sufficient amplitude to generate a burst of 4 APs (Fig. \ref{fig:AHP}). The AHPs produced under these conditions in the yPC have a peak amplitude of 3-4 mV (\nameref{S5_Fig} inset), similar to recordings \cite{matthews2009fast,power2002age}. The aPC required 35 pA more current than the yPC to fire the same number of spikes (Fig. \ref{fig:AHP}E). However, the aPC fires earlier than the yPC due to its increased {\Ca} current (Fig. \ref{fig:AHP}A inset). The aPC generates an AHP 1-2 mV larger than seen in the yPC (Fig. \ref{fig:AHP}B), similar to the difference observed in recordings between young and aged cells \cite{moyer1992nimodipine,gant2006early,power2002age}. In the model, this larger AHP is due to an increased accumulation of {\Ca} in the aPC, which in turn produces a larger SK current (Fig. \ref{fig:AHP}C, D, respectively).
+
+\begin{figure}[h!]
+\centering
+%\includegraphics[width=0.8\textwidth]{figures/Fig2.TIFF}
+\caption{{\bf AHPs in model PCs.}
+(A.) Responses of the yPC (solid black traces) and aPC (dashed red traces) to 100 ms pulse. Voltage zoom in (B.) shows AHPs in detail. Corresponding {\Ca} concentrations and SK currents are shown in (C.), and (D.), respectively. Parameters same as in Fig. \ref{fig:adapt}, except for the current stimulation duration and amplitude. Current amplitude adjusted to the minimum required (within 1 pA) to produce 4 spikes in each cell, i.e. 106 pA in yPC and 141 pA in aPC, as shown in (E.).}
+\label{fig:AHP}
+\end{figure}
+
+\subsection*{Modeling age-related changes in burst firing}
+
+\smallskip
+
+\subsubsection*{Bursting in response to stimulation}
+
+Some CA1 PCs fire bursts instead of trains of spikes \cite{su2001extracellular}, especially in certain developmental periods \cite{chen2005transitional}. Burst firing can be generated in the model with several different parameter combinations. For the following simulations, we modified several of the current amplitudes and select kinetics, all within physiological limits (see Table \ref{tab:regimes}). Under this parameter regime, model PCs are silent at rest but burst if stimulated (Fig. \ref{fig:burstStims} and \nameref{S6_Fig}).
+
+\begin{figure}[h!]
+\centering
+%\includegraphics[width=0.8\textwidth]{figures/Fig3.TIFF}
+\caption{{\bf Stimulated bursting in model PCs.}
+Bursting in the yPC (solid black traces) and aPC (dashed red traces) models in response to 800 ms current injections of 50-170 pA, as indicated in panels (A.)-(E.). Parameters for the yPC: $a_{NaT}= 1300$, $a_{CaL}=25$, $a_{DK}=6000$, $a_{SK}=1600$, $r_{w}=1.8$, $r_{c}=5e^{-3}$, $k_{c}=6e^{-6}$. All parameters for the aPC the same except $a_{CaL}=50$.}
+\label{fig:burstStims}
+\end{figure}
+
+To explore the effects of aging on bursting, we fixed all parameters except for the maximum {\Ca} current amplitude, as previously. We then stimulated the two model PCs with a series of square-pulse current injections of increasing amplitudes (50-170 pA) to compare their responses. Again, the larger {\Ca} current in the aPC causes it to fire either sooner or nearly simultaneously with the yPC shortly after stimulus onset in all simulations (\nameref{S8_Fig}). However, the relative timing of the PCs' firing after the first burst depends on the stimulus amplitude (Fig. \ref{fig:burstStims}).
+
+At lower stimulation amplitudes (50 and 80 pA; Fig. \ref{fig:burstStims}A and B), the aPC continues to burst sooner or nearly simultaneously, but always fires fewer spikes per burst than the yPC (2 versus 3, respectively). As the stimulation amplitude increases (110 pA; Fig. \ref{fig:burstStims}C), the two PCs again fire nearly simultaneously at the onset. However, because the aPC fires fewer spikes per burst, it is able to recover sooner and burst before the yPC for four cycles. It is only towards the end of the stimulus that the larger AHP in the aPC eventually brings it into sync again with the yPC. Finally, at the highest stimulation amplitudes (140 and 170 pA; Fig. \ref{fig:burstStims}D and E), both PCs show stronger adaptation, but the yPC maintains something akin to bursting, while the aPC `devolves' to a pattern more like tonic spiking. Depending on what is considered the relevant electrical event -- the single spike or the burst -- the aPC shows an increased number of events relative to the yPC (13 spikes versus 8 burst-like events, respectively), but the normal bursting pattern is lost. 
+
+\subsubsection*{Spontaneous bursting}
+A small percentage of CA1 PCs fire bursts in the absence of stimulation \cite{jensen1994variant}. To generate this pattern, we again modifed several of the current amplitudes and select kinetics, all within physiological limits (see Table \ref{tab:regimes}). Under this parameter regime, the yPC fires spontaneous bursts at a frequency of $\sim$1 Hz with 3 spikes per burst (Fig. \ref{fig:burstingAging}C and \nameref{S9_Fig}), similar to recordings \cite{golomb2006contribution}.
+
+\begin{figure}[h!]
+\centering
+%\includegraphics[width=0.8\textwidth]{figures/Fig4.TIFF}
+\caption{{\bf Spontaneous bursting in model PCs.}
+Comparison of spontaneous electrical activity in the yPC (solid black traces) and aPC (dashed red traces) for different levels of DK current amplitude. $a_{DK}$ decreasing from 8000 to 6000 pA (8 to 6 nA) in steps of 500 pA, as indicated in (A.)-(E.). Parameters: $a_{NaT}=2300$, $a_{CaL}=25$, $a_{DK}=7000$, $a_{SK}=300$, $r_{w}=1.1$, $r_{c}=5e^{-2}$, $k_{c}=6e^{-6}$, $I_{F}=0.0$. All parameters for aPC the same except $a_{CaL}=50$.}
+\label{fig:burstingAging}
+\end{figure}
+
+Increasing the {\Ca} current, as previously, changed the spontaneous firing pattern (Fig. \ref{fig:burstingAging}). Additional interesting effects can be seen if we vary the DK current amplitude within the range previously used for simulations, 6000-8000 pA (6-8 nA). At the highest DK amplitude, the yPC bursts spontaneously but with only 2 spikes per burst (Fig. \ref{fig:burstingAging}A). The aPC, however, does not burst but spikes tonically at a frequency of $\sim$2 Hz. When the DK amplitude is reduced (7.5 nA), the yPC continues to burst, now with 3 spikes per burst, while the aPC still spikes tonically (Fig. \ref{fig:burstingAging}B). 
+
+Reducing the DK amplitude further (7 nA or 6.5 nA; Fig. \ref{fig:burstingAging}C or D), causes both PCs to burst spontaneously, though the aPC always fires fewer spikes per burst. One can use our Jupyter notebook to explore further, and see that while the {\Ca} current is larger for the aPC, the maximum accumulation of intracellular {\Ca} is either similar or higher in the yPC due to its additional spiking (\nameref{S11_Fig}). This causes a similar or larger SK current in the yPC, and results in a slower burst frequency.
+
+Finally, reducing the DK amplitude to the lowest level (6.0 nA; Fig. \ref{fig:burstingAging}E) removes more of the `brake' on the yPC and causes it to spike at high frequency and then quickly block depolarize. The aPC, on the other hand, retains the spontaneous bursting pattern, now with more spikes per burst.
+
+\subsection*{Responses to local field potential forcing}
+Square-pulse stimulation is useful for examining the timing of PC responses, but is not a physiologically realistic stimulus. Instead, to simulate local field potential (LFP) forcing onto CA1 PCs, we use an Ornstein-Uhlenbeck (OU) stochastic process \cite{rudolph2004method,destexhe2004novel}, as in Eq. \ref{eq:OU}. First, we reset the model with the parameters needed to produce adaptive firing. In the yPC, LFP forcing produces repetitive, irregular firing at a frequency of $\sim$3 Hz on average (Fig. \ref{fig:LFPadaptive}A), which is similar to recordings of spontaneous firing in CA1 PCs \cite{manseau2017tuning}, particularly in response to certain types of activity in the surrounding electrical field \cite{bland2005heterogeneity,huh2016excitatory}.
+
+\begin{figure}[h!]
+\centering
+%\includegraphics[width=0.8\textwidth]{figures/Fig5.TIFF}
+\caption{{\bf LFP-induced firing in model PCs.}
+Responses of the yPC (solid black traces) and aPC (dashed red traces) to the same LFP forcing while in adaptive firing mode. (A.) yPC response, (B.) aPC response, and (C.) overlap of the two traces. Parameters for the yPC and aPC are the same as in Fig.~\ref{fig:adapt}. LFP parameters: $\mu_{F}=50.0$~pA, $\sigma_{F}=25.0$ pA, $\tau_{F}=1/2.0$ for both model PCs.}
+\label{fig:LFPadaptive}
+\end{figure}
+
+In response to the exact same LFP forcing applied to the yPC, the aPC with increased {\Ca} current shows a similar irregular firing pattern, but slower frequency of $\sim$2 Hz (Fig. \ref{fig:LFPadaptive}B; compare overlap in C). The simulation also shows several time points when the two cells fire almost simultaneously, and then the yPC fires again while the aPC does not. This apparent `spike failure' has been seen in recordings of PCs from aged animals \cite{gant2009action}. 
+
+Next, we set the parameters to produce conditional bursting, as previously. The exact bursting pattern will vary depending on the stochastic OU process. However, under these conditions, LFP forcing in the yPC typically produces irregular burst firing at a frequency of $\sim$5Hz (i.e. theta frequency), with 2-4 spikes per burst (Fig. \ref{fig:LFPbursting}A). This firing pattern is similar to spontaneous activity recorded in a subset of CA1 PCs known as phasic theta-ON cells, which preferentially burst during theta activity recorded from the surrounding field \cite{bland2005heterogeneity,colom1987state}. Increased {\Ca} current in the aPC changes the firing pattern (Fig. \ref{fig:LFPbursting}B). In response to LFP forcing, the aPC still fires irregular bursts, but with fewer spikes per burst (usually 3 max) and a higher occurrence of 2-spike bursts than seen in the yPC. In addition, the aPC fires single APs amidst the bursts, which occurs less frequently in the yPC under this parameter regime. Also, the timing of the bursts in the aPC can change relative to the yPC (see overlap in Fig. \ref{fig:LFPbursting}C).
+
+\begin{figure}[h!]
+\centering
+%\includegraphics[width=0.8\textwidth]{figures/Fig6.TIFF}
+\caption{{\bf LFP-induced bursting in model PCs.}
+Responses of the conditionally bursting yPC (solid black traces) and aPC (dashed red traces) models to the same LFP forcing. (A.) yPC response, (B.) aPC response, and (C.) overlap of the two traces. Parameters for the yPC and aPC are the same as in Fig. \ref{fig:burstStims}. LFP parameters the same as in Fig. \ref{fig:LFPadaptive} except $\sigma_{F}=20.0$ pA.}
+\label{fig:LFPbursting}
+\end{figure}
+
+\section*{Discussion}
+
+\subsection*{Cellular heterogeneity}
+
+Our three-dimensional, single-compartment model derived from first principles of thermodynamics can reproduce the diversity of firing patterns recorded in CA1 PCs. Moving between the different patterns was achieved primarily by changes to the relative expression of ion channels in the model. We did not systematically explore the full parameter space, but future work could include bifurcation analysis to determine boundaries for each firing pattern. The flexibility of the model could be useful for researchers to study the effects of PC heterogeneity on network function. Geiller and colleagues \cite{geiller2017segregated} write, ``Until very recently, hippocampus models and theories were built on a view of homogenous population of principal cells'' (pg. 6). However, there is heterogeneity in CA1 PCs, especially during different development stages (for review, see \cite{mckiernan2017ca1}). Lee and colleagues \cite{lee2014parvalbumin} write, ``how the heterogeneous PCs integrate into the CA1 circuit remains unknown'' (pg. 1129). 
+
+Experimentally, it is difficult to quantify how many PCs in a given network are displaying a specific firing pattern, and even harder, if not impossible, to manipulate these percentages. Furthermore, cells can transition between firing patterns \cite{steriade1998dynamic}, meaning percentages might fluctuate. With our minimal model, however, we could build small networks with different balances of adapting versus bursting PCs, and explore how this affects network output. This might help researchers understand the extent of `acceptable' heterogeneity within hippocampal circuits, or how sensitive these networks are to changes in the overall balance of cells displaying different firing patterns. Such insights will be relevant to neurophysiological aging, as these balances can change over a lifespan \cite{chen2005transitional}, and also to age-related brain disorders such as Alzheimer's in which altered cell firing could disrupt the balance \cite{frere2018alzheimer}. We could also model the progression of aging in the network by varying the percentage of PCs which have altered {\Ca} channel density, or implement a whole spectrum of channel expression across the simulated network. Studies like these may bring researchers closer to understanding the different stages of neurophysiological, or even pathophysiological, aging by allowing one to systematically vary biophysical parameters over a continuous range and identify points at which the system undergoes clear transitions in behavior.
+
+\subsection*{Aging and {\Ca} channel expression}
+Our model can also reproduce changes in electrical activity seen in aged CA1 PCs, including larger AHPs \cite{landfield1984prolonged,gant2009action,power2002age} and increased adaptation \cite{gant2006early,moyer1992nimodipine,tombaugh2005slow}, by increasing the L-type {\Ca} current amplitude 
+to a level similar to that found in recordings. The L-type channel was modeled after the Ca$_v$1.2 isoform based on work showing this is the primary contributor in rodent brain, responsible for $\sim$70-80\% of the L-type current \cite{hell1993identification,sinnegger2004isoform}. mRNA expression of \textit{Cacnac1C} (the gene encoding Ca$_v$1.2) is increased in aged mice and rats \cite{herman1998up,zanos2015sex}. Increases in plasma membrane expression \cite{nunez2014surface} and phosphorylation \cite{davare2003increased} of Ca$_v$1.2 channels have also been seen in aged rats. In addition, changes in \textit{Cacna1c}/Ca$_v$1.2 expression are correlated with memory impairments \cite{moosmang2005role,zanos2015sex}.
+
+However, CA1 PCs also express the Ca$_v$1.3 isoform \cite{bowden2001somatic}, which is responsible for $\sim$20\% of the total L-type current \cite{hell1993identification,sinnegger2004isoform}. Studies have found both increased mRNA \cite{herman1998up} and protein \cite{veng2002regionally} expression of Ca$_v$1.3 in aged rats, and this increased expression is correlated with memory impairment \cite{veng2003age}. Knockout studies in mice indicate that it is this isoform, and not Ca$_v$1.2, which contributes to slow AHP generation \cite{gamelli2011deletion}, possibly via activation of co-localized SK channels \cite{bowden2001somatic}. While experimental studies have been complicated by a lack of pharmacological agents which can isolate currents carried by the different isoforms, it would be relatively simple with our model to study the contributions of these two channels. The primary difference between the two is a shift in the activation curve of the Ca$_v$1.3 channel to more hyperpolarized values, relative to Ca$_v$1.2 \cite{xu2001neuronal}. Changing the parameter $v_j$ in Eq. \ref{eq:gating} would allow us to represent the different isoforms and explore how changes in the expression of each during aging might affect PC activity.  
+
+There are many cellular changes apart from {\Ca} channel expression that occur during aging and could contribute to altered activity in PCs. Studies have implicated {\Ca} release from intracellular stores as an important contributor, particularly to larger AHPs in aged animals
+(for reviews see \cite{thibault2007expansion,toescu2010calcium}). We did not explore the role of intracellular {\Ca} stores in this study, nor many of the other cellular changes that surely contribute to the multifactorial process of aging. It is not our intention to suggest {\Ca} channel expression is the only factor altering the activity of PCs in aged animals. Nevertheless, we do demonstrate that an increase in L-type {\Ca} channels is \textit{sufficient} to reproduce many of the changes in PC firing seen during aging. These results agree with a previous modeling study, which also found that an increase in L-type {\Ca} conductance was sufficient to produce changes in adaptation and AHPs similar to those seen in aged CA1 PCs \cite{markaki2005modelling}. However, their model was mathematically complex, with 183 compartments and more than a dozen ionic currents -- very different from the single-compartment, minimal model we present here. In addition, their study looked only at adaptation and AHPs, while our study goes further to investigate conditional bursting, spontaneous bursting, and responses to LFP stimulation.
+
+\subsection*{Aging and excitability}
+ Our simulations do show changes in the electrical activity of aged PCs, but do these changes represent decreased excitability? This question relates more broadly to how we think about excitability -- the term is rarely clearly defined or used in a standardized way. In some studies, excitability is used to refer to a change in the firing rate of a cell over the course of an injected current pulse, claiming that PCs with stronger adaptation are less excitable \cite{moyer1992nimodipine}. In our simulations under the adaptive firing parameter regime, the aPC did have stronger adaptation and fired fewer times during the stimulation period than the yPC. However, under some circumstances, this stronger adaptation occurred only after the aPC initially fired faster than the yPC (see for example Fig. \ref{fig:AHP} inset). Should we consider this decreased excitability? 
+ 
+ If what concerns us with excitability is the activity of the cell over a given time period, then the results under the bursting parameter regimes are even less clear. The aPC always fired fewer APs per burst than the yPC, indicating something akin to stronger adaptation. However, if the `event' we are considering is instead the burst, there are conditions under which the aPC fired a greater number of bursts in a given time period than the yPC. How should we interpret these results with respect to excitability? To our knowledge, there are very few experimental studies to date that have compared burst firing in young versus aged animal CA1 PCs, perhaps because of the relatively low percentage of cells with this firing pattern in certain developmental periods \cite{chen2005transitional}. The only study of which we are aware compared spontaneous burst firing in young versus aged animal PCs during rest and exploratory behavior \cite{smith2000effect}. Unfortunately, there are several factors that make it difficult to compare our results with theirs. First, their recordings were extracellular. As such, no bursts from individual PCs are shown in the paper to compare to our simulations, which reproduce intracellular firing. Furthermore, the study focused on interspike intervals (ISIs), rather than the overall bursting pattern (e.g. number of bursts in a given period), which was our focus. Interestingly, Smith and colleagues \cite{smith2000effect} found that while ISIs were more left-skewed in aged animals when burst firing was recorded at rest, they found no difference between the age groups during behavior, suggesting that compensatory mechanisms work differently during behavior to adjust for changes in cellular excitability. Such compensatory mechanisms could be explored using our model, for example by adding simulated cholinergic input. 
+ 
+There are studies comparing bursting activity in young and aged animals in other areas of the brain. For example, Sagheddu and colleagues recorded from dopaminergic and GABAergic cells in the ventral tegmental area (VTA), and showed that both the percentage of spikes organized into bursts and the rate of bursting was lower in cognitively impaired aged rats \cite{sagheddu2024cognitive}. In particular, their finding that the firing patterns of these cells in aged animals change from bursting to more single spiking (i.e. the percentage decrease) is consistent with some of our simulations.
+ 
+Other researchers use the term excitability to describe how easy it is to get a cell to fire in response to stimulation, referring to ``propensity" \cite{daoudal2003long} or ``readiness" \cite{konstantinovic2019effects}. In this context, excitability could be measured by the rheobase, or minimum current which generates firing in a neuron, as done in some studies of aging in CA1 \cite{potier1993age}. However, `propensity' or `readiness' could also be interpreted as how quickly a cell fires after stimulus onset. In the AHP simulations, we saw that the aPC required additional current to fire the same number of spikes as for the yPC. On the other hand, the aPC often fired sooner than the yPC. These effects were a result of the increased {\Ca} current in aged cells -- the larger {\Ca} current depolarized the cells faster and caused them to fire sooner, but it also caused the SK current to be larger and consequently slowed firing. It is as if the aPCs were initially more excitable, but then `burned out' more quickly than the yPCs. 
+
+Overall, we believe our results highlight the importance of moving away from vague terms like `excitability' in favor of precise language that describes the effect of interest (e.g., PCs spiked faster, spiked sooner, etc.). We hope that, in a broader sense, our study will encourage neuroscientists, and particularly aging researchers, to reevaluate how they think and write about excitability.
+
+\section*{Supporting information}
+
+% Include only the SI item label in the paragraph heading. Use the \nameref{label} command to cite SI items in the text.
+\paragraph*{S1 Fig. Plots of model functions.} (A.) Forward ($\alpha_w$) and backward ($\beta_w$) rate functions, and the time constant ($\tau_w$), of activation of DK channels in the model. (B.) Steady-state activation curves for DK ($w_{\infty}$), \Na ($m_{\infty}$), and L-type \Ca ($n_{\infty}$) channels. (C.) Full expressions and plots for each ion current in the model.
+\label{S1_Fig}
+
+\paragraph*{S2 Fig.}
+\label{S2_Fig}
+{\bf Adaptive firing in yPC.} (A.) Voltage response of the young model PC (yPC) in response to a 800 ms 150 pA square-pulse stimulation seen in (B.).
+
+\paragraph*{S3 Fig.}
+\label{S3_Fig}
+{\bf APs and currents underlying adaptive firing in yPC.} (A.) Two action potentials (APs) from the response seen in \nameref{S2_Fig}. (B.) Voltage- and \Ca-gated currents in the models as indicated in the legend, and their amplitudes and dynamics during the APs. Note that the \Na-\K pump current is not plotted due to its small amplitude.
+
+\paragraph*{S4 Fig.}
+\label{S4_Fig}
+{\bf Early and late adaptive firing in model PCs.} Further examination of the responses seen in Fig. \ref{fig:adapt}. (A.) Voltage responses of the yPC and aPC in the first $\sim$100 ms of the square-pulse stimulation (6 vs. 4 spikes). (B.) Voltage responses of the yPC and aPC in the last $\sim$700 ms of the square-pulse stimulation (4 vs. 2 spikes). 
+
+\paragraph*{S5 Fig.}
+\label{S5_Fig}
+{\bf AHP in yPC.} (A.) Voltage response to a 100 ms square-pulse current injection of sufficient amplitude to elicit 4 APs in the yPC. Inset shows the amplitude and duration of the resulting afterhyperpolarization (AHP). (B.) Current pulse.
+
+\paragraph*{S6 Fig.}
+\label{S6_Fig}
+{\bf Conditional bursting in yPC.} (A.) Bursting in the yPC in response to a 800 ms 100 pA square-pulse current injection seen in (B.).
+
+\paragraph*{S7 Fig.}
+\label{S7_Fig}
+{\bf APs and currents underlying conditional burst firing in yPC.} (A.) Three APs from the response seen in \nameref{S5_Fig}. (B.) Voltage- and \Ca-gated currents in the models as indicated in the legend, and their amplitudes and dynamics during the APs. Note that the \Na-\K pump current is not plotted due to its small amplitude.
+
+\paragraph*{S8 Fig.}
+\label{S8_Fig}
+{\bf Conditional bursting in yPC and aPC compared at a single stimulation amplitude.} A. Bursting in the yPC (solid black traces) versus aPC (dashed red traces) in response to a 800 ms 100 pA square-pulse stimulation seen in (E.). Corresponding {\Ca} currents, intracellular {\Ca} concentration, and SK currents are shown in (B.), (C.), and (D.), respectively.
+
+\paragraph*{S9 Fig.}
+\label{S9_Fig}
+{\bf Spontaneous bursting in yPC.} (A.) Changes in membrane potential (i.e. spontaneous bursting) in the absence of current stimulation (B.).
+
+\paragraph*{S10 Fig.}
+\label{S10_Fig}
+{\bf APs and currents underlying spontaneous burst firing in yPC.} (A.) Three APs from the response seen in \nameref{S8_Fig}. (B.) Voltage- and \Ca-gated currents in the models as indicated in the legend, and their amplitudes and dynamics during the APs. Note that the \Na-\K pump current is not plotted due to its small amplitude.
+
+\paragraph*{S11 Fig.}
+\label{S11_Fig}
+{\bf Spontaneous bursting compared in yPC and aPC at single DK current amplitude.} A. Bursting in the yPC (solid black traces) versus aPC (dashed red traces) in the absence of stimulation (E.). Corresponding {\Ca} currents, intracellular {\Ca} concentration, and SK currents are shown in (B.), (C.), and (D.), respectively.
+
+\section*{Funding} 
+This work was supported by grants from the Natural Sciences and Engineering Research Council of Canada, as well as the Ontario Mental Health Foundation, awarded to DFM. This work was also supported by DGAPA-UNAM-PAPIIT IA209817 awarded to ECM; and by DGAPA-UNAM-PAPIIT IA208618 \& IN228820, and DGAPA-UNAM-PAPIME PE114919 awarded to MAH-V. The funders had no role in study design, data collection and analysis, decision to publish, or preparation of the manuscript.  
+
+\section*{Acknowledgments}
+We thank anonymous reviewers whose suggestions helped us to improve this manuscript.
+
+\nolinenumbers
+
+% Compile your BiBTeX database using our plos2015.bst
+% style file and paste the contents of your .bbl file
+% here. See http://journals.plos.org/plosone/s/latex for 
+% step-by-step instructions. 
+
+%\bibliography{pyrbib.bib}
+
+\begin{thebibliography}{100}
+
+\bibitem{oh2010learning}
+Oh MM, Oliveira FA, Disterhoft JF.
+\newblock Learning and aging related changes in intrinsic neuronal excitability.
+\newblock Frontiers in Aging Neuroscience. 2010;2:2.
+
+\bibitem{rosenzweig2003impact}
+Rosenzweig ES, Barnes CA.
+\newblock Impact of aging on hippocampal function: plasticity, network dynamics, and cognition.
+\newblock Progress in Neurobiology. 2003;69(3):143--179.
+
+\bibitem{fjell2014normal}
+Fjell AM, McEvoy L, Holland D, Dale AM, Walhovd KB, {for the Alzheimer's Disease Neuroimaging Initiative}.
+\newblock {What is normal in normal aging? Effects of aging, amyloid and Alzheimer's disease on the cerebral cortex and the hippocampus}.
+\newblock Progress in Neurobiology. 2014;117:20--40.
+
+\bibitem{rodriguez2015parkinson}
+Rodriguez M, Rodriguez-Sabate C, Morales I, Sanchez A, Sabate M.
+\newblock Parkinson's disease as a result of aging.
+\newblock Aging Cell. 2015;14(3):293--308.
+
+\bibitem{barnes1985age}
+Barnes CA, McNaughton BL.
+\newblock An age comparison of the rates of acquisition and forgetting of spatial information in relation to long-term enhancement of hippocampal synapses.
+\newblock Behavioral Neuroscience. 1985;99(6):1040--1048.
+
+\bibitem{gage1984spatial}
+Gage FH, Dunnett SB, Bj{\"o}rklund A.
+\newblock Spatial learning and motor deficits in aged rats.
+\newblock Neurobiology of Aging. 1984;5(1):43--48.
+
+\bibitem{caprioli1991spatial}
+Caprioli A, Ghirardi O, Giuliani A, Ramacci MT, Angelucci L.
+\newblock {Spatial learning and memory in the radial maze: A longitudinal study in rats from 4 to 25 months of age}.
+\newblock Neurobiology of Aging. 1991;12(5):605--607.
+
+\bibitem{wilkniss1997age}
+Wilkniss SM, Jones MG, Korol DL, Gold PE, Manning CA.
+\newblock Age-related differences in an ecologically based study of route learning.
+\newblock Psychology and Aging. 1997;12(2):372--375.
+
+\bibitem{deupree1993age}
+Deupree DL, Bradley J, Turner DA.
+\newblock {Age-related alterations in potentiation in the CA1 region in F344 rats}.
+\newblock Neurobiology of Aging. 1993;14(3):249--258.
+
+\bibitem{rosenzweig1997role}
+Rosenzweig ES, Rao G, McNaughton BL, Barnes CA.
+\newblock Role of temporal summation in age-related long-term potentiation--induction deficits.
+\newblock Hippocampus. 1997;7(5):549--558.
+
+\bibitem{landfield1978impaired}
+Landfield PW, McGaugh JL, Lynch G.
+\newblock Impaired synaptic potentiation processes in the hippocampus of aged, memory-deficient rats.
+\newblock Brain Research. 1978;150(1):85--101.
+
+\bibitem{landfield1984prolonged}
+Landfield PW, Pitler TA.
+\newblock {Prolonged {\Ca}-dependent afterhyperpolarizations in hippocampal neurons of aged rats}.
+\newblock Science. 1984;226(4678):1089--1092.
+
+\bibitem{gant2009action}
+Gant JC, Thibault O.
+\newblock Action potential throughput in aged rat hippocampal neurons: regulation by selective forms of hyperpolarization.
+\newblock {Neurobiology of Aging}. 2009;30(12):2053--2064.
+
+\bibitem{power2002age}
+Power JM, Wu WW, Sametsky E, Oh MM, Disterhoft JF.
+\newblock {Age-related enhancement of the slow outward calcium-activated potassium current in hippocampal CA1 pyramidal neurons in vitro}.
+\newblock Journal of Neuroscience. 2002;22(16):7234--7243.
+
+\bibitem{alger1980epileptiform}
+Alger BE, Nicoll RA.
+\newblock {Epileptiform burst afterhyperolarization: Calcium-dependent potassium potential in hippocampal CA1 pyramidal cells}.
+\newblock Science. 1980;210(4474):1122--1124.
+
+\bibitem{hotson1980calcium}
+Hotson JR, Prince DA.
+\newblock A calcium-activated hyperpolarization follows repetitive firing in hippocampal neurons.
+\newblock Journal of Neurophysiology. 1980;43(2):409--419.
+
+\bibitem{gant2006early}
+Gant JC, Sama MM, Landfield PW, Thibault O.
+\newblock {Early and simultaneous emergence of multiple hippocampal biomarkers of aging is mediated by {\Ca}-induced {\Ca} release}.
+\newblock {Journal of Neuroscience}. 2006;26(13):3482--3490.
+
+\bibitem{moyer1992nimodipine}
+Moyer JR, Thompson LT, Black JP, Disterhoft JF.
+\newblock {Nimodipine increases excitability of rabbit CA1 pyramidal neurons in an age- and concentration-dependent manner}.
+\newblock Journal of Neurophysiology. 1992;68(6):2100--2109.
+
+\bibitem{tombaugh2005slow}
+Tombaugh GC, Rowe WB, Rose GM.
+\newblock {The slow afterhyperpolarization in hippocampal CA1 neurons covaries with spatial learning ability in aged Fisher 344 rats}.
+\newblock Journal of Neuroscience. 2005;25(10):2609--2616.
+
+\bibitem{campbell1996aging}
+Campbell LW, Hao SY, Thibault O, Blalock EM, Landfield PW.
+\newblock {Aging changes in voltage-gated calcium currents in hippocampal CA1 neurons}.
+\newblock Journal of Neuroscience. 1996;16(19):6286--6295.
+
+\bibitem{thibault2001elevated}
+Thibault O, Hadley R, Landfield PW.
+\newblock {Elevated postsynaptic [Ca$^{2+}$]$_i$ and L-type calcium channel activity in aged hippocampal neurons: Relationship to impaired synaptic plasticity}.
+\newblock Journal of Neuroscience. 2001;21(24):9744--9756.
+
+\bibitem{herman1998up}
+Herman JP, Chen KC, Booze R, Landfield PW.
+\newblock {Up-regulation of $\alpha_{1D}$ {\Ca} channel subunit mRNA expression in the hippocampus of aged F344 rats}.
+\newblock Neurobiology of Aging. 1998;19(6):581--587.
+
+\bibitem{thibault1996increase}
+Thibault O, Landfield PW.
+\newblock {Increase in single L-type calcium channels in hippocampal neurons during aging}.
+\newblock Science. 1996;272(5264):1017--1020.
+
+\bibitem{veng2002regionally}
+Veng LM, Browning MD.
+\newblock {Regionally selective alterations in expression of the $\alpha_{1D}$ subunit (Ca$_v$1.3) of L-type calcium channels in the hippocampus of aged rats}.
+\newblock Molecular Brain Research. 2002;107(2):120--127.
+
+\bibitem{nunez2014surface}
+N{\'u}{\~n}ez-Santana FL, Oh MM, Antion MD, Lee A, Hell JW, Disterhoft JF.
+\newblock {Surface L-type {\Ca} channel expression levels are increased in aged hippocampus}.
+\newblock Aging Cell. 2014;13(1):111--120.
+
+\bibitem{norris1998reversal}
+Norris CM, Halpain S, Foster TC.
+\newblock {Reversal of age-related alterations in synaptic plasticity by blockade of L-type {\Ca} channels}.
+\newblock Journal of Neuroscience. 1998;18(9):3171--3179.
+
+\bibitem{sandin1990aging}
+Sandin M, Jasmin S, Levere TE.
+\newblock {Aging and cognition: Facilitation of recent memory in aged nonhuman primates by nimodipine}.
+\newblock Neurobiology of Aging. 1990;11(5):573--575.
+
+\bibitem{herrera2012membranes}
+Herrera-Valdez MA.
+\newblock Membranes with the same ion channel populations but different excitabilities.
+\newblock PLOS ONE. 2012;7(4):e34636.
+
+\bibitem{herrera2013relating}
+Herrera-Valdez MA, McKiernan EC, Berger SD, Ryglewski S, Duch C, Crook S.
+\newblock Relating ion channel expression, bifurcation structure, and diverse firing patterns in a model of an identified motor neuron.
+\newblock Journal of Computational Neuroscience. 2013;34(2):211--229.
+
+\bibitem{herrera2018thermodynamic}
+Herrera-Valdez MA.
+\newblock A thermodynamic description for physiological transmembrane transport [version 3; peer review: 2 approved].
+\newblock F1000Research. 2021;7:1468.
+
+\bibitem{mckiernan2017ca1}
+McKiernan EC, Marrone DF.
+\newblock {CA1 pyramidal cells have diverse biophysical properties, affected by development, experience, and aging}.
+\newblock PeerJ. 2017;5:e3836.
+
+\bibitem{avron1993basic}
+Av-Ron E, Parnas H, Segel LA.
+\newblock A basic biophysical model for bursting neurons.
+\newblock Biological Cybernetics. 1993;69(1):87--95.
+
+\bibitem{hindmarsh1984model}
+Hindmarsh JL, Rose RM.
+\newblock A model of neuronal bursting using three coupled first order differential equations.
+\newblock Proceedings of the Royal Society B. 1984;221(1222):87--102.
+
+\bibitem{rinzel1985excitation}
+Rinzel J.
+\newblock Excitation dynamics: insights from simplified membrane models.
+\newblock {Federation Proceedings}. 1985;44(15):2944--2946.
+
+\bibitem{avron1991minimal}
+Av-Ron E, Parnas H, Segel LA.
+\newblock A minimal biophysical model for an excitable and oscillatory neuron.
+\newblock Biological Cybernetics. 1991;65(6):487--500.
+
+\bibitem{herrera2020nonequivalent}
+Herrera-Valdez MA.
+\newblock An equation for the biological transmembrane potential from basic biophysical principles [version 1; peer review: 2 not approved].
+\newblock F1000Research. 2020;9:676.
+
+\bibitem{groc2002vivo}
+Groc L, Petanjek Z, Gustafsson B, Ben-Ari Y, Hanse E, Khazipov R.
+\newblock {\textit{In vivo} blockade of neural activity alters dendritic development of neonatal CA1 pyramidal cells}.
+\newblock European Journal of Neuroscience. 2002;16(10):1931--1938.
+
+\bibitem{hille2001ion}
+Hille B.
+\newblock {Ion Channels of Excitable Membranes}.
+\newblock 3rd ed. Sinauer Associates, Sunderland, Massachusetts, U.S.A; 2001.
+
+\bibitem{stocker20042+}
+Stocker M.
+\newblock {{\Ca}-activated {\K} channels: Molecular determinants and function of the SK family}.
+\newblock Nature Reviews Neuroscience. 2004;5:758--770.
+
+\bibitem{kalinin2005boltzmann}
+Kalinin MI, Kononogov SA.
+\newblock Boltzmann's constant, the energy meaning of temperature, and thermodynamic irreversibility.
+\newblock Measurement Techniques. 2005;48(7):632--636.
+
+\bibitem{Covarrubiasetal1991}
+Covarrubias M, Wei A, Salkoff L.
+\newblock {Shaker, Shal, Shab, and Shaw expresss independent {\K}-current systems}.
+\newblock Neuron. 1991;7(5):763--773.
+
+\bibitem{hodgkin1952quantitative}
+Hodgkin AL, Huxley AF.
+\newblock A quantitative description of membrane current and its application to conduction and excitation in nerve.
+\newblock The Journal of Physiology. 1952;117(4):500--544.
+
+\bibitem{TsunodaSalkoff1995b}
+Tsunoda S, Salkoff L.
+\newblock {The major delayed rectifier in both Drosophila neurons and muscle is encoded by Shab}.
+\newblock Journal of Neuroscience. 1995;15(7):5209--5221.
+
+\bibitem{hirschberg1998gating}
+Hirschberg B, Maylie J, Adelman JP, Marrion NV.
+\newblock {Gating of recombinant small-conductance Ca-activated {\K} channels by calcium}.
+\newblock Journal of General Physiology. 1998;111(4):565--581.
+
+\bibitem{rudolph2003characterization}
+Rudolph M, Destexhe A.
+\newblock Characterization of subthreshold voltage fluctuations in neuronal membranes.
+\newblock Neural Computation. 2003;15(11):2577--2618.
+
+\bibitem{gillespie1996exact}
+Gillespie DT.
+\newblock Exact numerical simulation of the {Ornstein-Uhlenbeck} process and its integral.
+\newblock Physical Review E. 1996;54(2):2084--2091.
+
+\bibitem{rudolph2004method}
+Rudolph M, Piwkowska Z, Badoual M, Bal T, Destexhe A.
+\newblock A method to estimate synaptic conductances from membrane potential fluctuations.
+\newblock Journal of Neurophysiology. 2004;91(6):2884--2896.
+
+\bibitem{destexhe2004novel}
+Destexhe A, Badoual M, Piwkowska Z, Bal T, Rudolph M.
+\newblock A novel method for characterizing synaptic noise in cortical neurons.
+\newblock Neurocomputing. 2004;58:191--196.
+
+\bibitem{murakoshi1999identification}
+Murakoshi H, Trimmer JS.
+\newblock {Identification of the Kv2.1 K$^+$ channel as a major component of the delayed rectifier K$^+$ current in rat hippocampal neurons}.
+\newblock Journal of Neuroscience. 1999;19(5):1728--1735.
+
+\bibitem{hell1993identification}
+Hell JW, Westenbroek RE, Warner C, Ahlijanian MK, Prystay W, Gilbert MM, et~al.
+\newblock {Identification and differential subcellular localization of the neuronal class C and class D L-type calcium channel alpha 1 subunits}.
+\newblock Journal of Cell Biology. 1993;123(4):949--962.
+
+\bibitem{li1992functional}
+Li M, West JW, Lai Y, Scheuer T, Catterall WA.
+\newblock {Functional modulation of brain sodium channels by cAMP-dependent phosphorylation}.
+\newblock Neuron. 1992;8(6):1151--1159.
+
+\bibitem{fadool1998modulation}
+Fadool DA, Levitan IB.
+\newblock Modulation of olfactory bulb neuron potassium current by tyrosine phosphorylation.
+\newblock Journal of Neuroscience. 1998;18(16):6126--6137.
+
+\bibitem{ketelaars2001sodium}
+Ketelaars SOM, Gorter JA, van Vliet EA, Lopes~da Silva FH, Wadman WJ.
+\newblock {Sodium currents in isolated rat CA1 pyramidal and dentate granule neurones in the post-status epilepticus model of epilepsy}.
+\newblock Neuroscience. 2001;105(1):109--120.
+
+\bibitem{sah1988sodium}
+Sah P, Gibb AJ, Gage PW.
+\newblock {The sodium current underlying action potentials in guinea pig hippocampal CA1 neurons}.
+\newblock Journal of General Physiology. 1988;91(3):373--398.
+
+\bibitem{mohapatra2009regulation}
+Mohapatra DP, Misonou H, Sheng-Jun P, Held JE, Surmeier DJ, Trimmer JS.
+\newblock {Regulation of intrinsic excitability in hippocampal neurons by activity-dependent modulation of the K$_V$2.1 potassium channel}.
+\newblock Channels. 2009;3(1):46--56.
+
+\bibitem{scuvee2004electrophysiological}
+Scuv{\'e}e-Moreau J, Boland A, Graulich A, Van~Overmeire L, D'hoedt D, Graulich-Lorge F, et~al.
+\newblock {Electrophysiological characterization of the SK channel blockers methyl-laudanosine and methyl-noscapine in cell lines and rat brain slices}.
+\newblock British Journal of Pharmacology. 2004;143(6):753--764.
+
+\bibitem{richards2007differential}
+Richards KS, Bommert K, Szabo G, Miles R.
+\newblock {Differential expression of {\Na}/{\K}-ATPase $\alpha$-subunits in mouse hippocampal interneurones and pyramidal cells}.
+\newblock The Journal of Physiology. 2007;585(2):491--505.
+
+\bibitem{johnston1995foundations}
+Johnston D, Wu SMS.
+\newblock Foundations of Cellular Neurophysiology.
+\newblock MIT Press; 1995.
+
+\bibitem{egelman1999calcium}
+Egelman DM, Montague PR.
+\newblock Calcium dynamics in the extracellular space of mammalian neural tissue.
+\newblock {Biophysical Journal}. 1999;76(4):1856--1867.
+
+\bibitem{endresen2000theory}
+Endresen LP, Hall K, H{\o}ye JS, Myrheim J.
+\newblock A theory for the membrane potential of living cells.
+\newblock European Biophysics Journal. 2000;29(2):90--103.
+
+\bibitem{weer1988voltage}
+Weer PD, Gadsby DC, Rakowski RF.
+\newblock {Voltage dependence of the Na-K pump}.
+\newblock Annual Review of Physiology. 1988;50(1):225--241.
+
+\bibitem{carter2009sodium}
+Carter BC, Bean BP.
+\newblock Sodium entry during action potentials of mammalian neurons: incomplete inactivation and reduced metabolic efficiency in fast-spiking neurons.
+\newblock Neuron. 2009;64(6):898--909.
+
+\bibitem{gasparini2002phosphorylation}
+Gasparini S, Magee JC.
+\newblock {Phosphorylation-dependent differences in the activation properties of distal and proximal dendritic {\Na} channels in rat CA1 hippocampal neurons}.
+\newblock The Journal of Physiology. 2002;541(3):665--672.
+
+\bibitem{martina1997functional}
+Martina M, Jonas P.
+\newblock Functional differences in {\Na} channel gating between fast-spiking interneurones and principal neurones of rat hippocampus.
+\newblock The Journal of Physiology. 1997;505(3):593--603.
+
+\bibitem{magee1995characterization}
+Magee JC, Johnston D.
+\newblock {Characterization of single voltage-gated {\Na} and {\Ca} channels in apical dendrites of rat CA1 pyramidal neurons}.
+\newblock The Journal of Physiology. 1995;487(1):67--90.
+
+\bibitem{xu2001neuronal}
+Xu W, Lipscombe D.
+\newblock {Neuronal Ca$_v$1.3 $\alpha_1$ L-type channels activate at relatively hyperpolarized membrane potentials and are incompletely inhibited by dihydropyridines}.
+\newblock Journal of Neuroscience. 2001;21(16):5944--5951.
+
+\bibitem{balasubramanian2009optimization}
+Balasubramanian B, Imredy JP, Kim D, Penniman J, Lagrutta A, Salata JJ.
+\newblock {Optimization of Ca$_v$1.2 screening with an automated planar patch clamp platform}.
+\newblock Journal of Pharmacological and Toxicological Methods. 2009;59(2):62--72.
+
+\bibitem{carter2012transient}
+Carter BC, Giessel AJ, Sabatini BL, Bean BP.
+\newblock Transient sodium current at subthreshold voltages: activation by EPSP waveforms.
+\newblock Neuron. 2012;75(6):1081--1093.
+
+\bibitem{costa1996kinetic}
+Costa PF.
+\newblock {The kinetic parameters of sodium currents in maturing acutely isolated rat hippocampal CA1 neurones}.
+\newblock Developmental Brain Research. 1996;91(1):29--40.
+
+\bibitem{shin2021sites}
+Shin SK, Li HY, Cho K, Cho YW, Lee JH, Park KS.
+\newblock {Sites and regulation of L-type {\Ca} channel Ca$_v$1.2 phosphorylation in brain}.
+\newblock {Cellular and Molecular Neurobiology}. 2021; p. 2427–2431.
+
+\bibitem{vandongen1990alteration}
+VanDongen AMJ, Frech GC, Drewe JA, Joho RH, Brown AM.
+\newblock {Alteration and restoration of {\K} channel function by deletions at the N-and C-termini}.
+\newblock Neuron. 1990;5(4):433--443.
+
+\bibitem{oh2013altered}
+Oh MM, Oliveira FA, Waters J, Disterhoft JF.
+\newblock {Altered calcium metabolism in aging CA1 hippocampal pyramidal neurons}.
+\newblock Journal of Neuroscience. 2013;33(18):7905--7911.
+
+\bibitem{magee1996dihydropyridine}
+Magee JC, Avery RB, Christie BR, Johnston D.
+\newblock {Dihydropyridine-sensitive, voltage-gated {\Ca} channels contribute to the resting intracellular {\Ca} concentration of hippocampal CA1 pyramidal neurons}.
+\newblock Journal of Neurophysiology. 1996;76(5):3460--3470.
+
+\bibitem{numpyHarris2020}
+Harris CR, Millman KJ, van~der Walt SJ, Gommers R, Virtanen P, Cournapeau D, et~al.
+\newblock {Array programming with {NumPy}}.
+\newblock Nature. 2020;585(7825):357--362.
+
+\bibitem{hunter2007matplotlib}
+Hunter JD.
+\newblock {Matplotlib: A 2D graphics environment}.
+\newblock Computing in Science \& Engineering. 2007;9(3):90--95.
+
+\bibitem{mondaca200PyProcess}
+Mondaca D. {pyprocess}; 2012--present.
+\newblock Available from: \url{https://pypi.org/project/pyprocess/}.
+
+\bibitem{kluyver2016jupyter}
+Kluyver T, Ragan-Kelley B, P{\'e}rez F, Granger BE, Bussonnier M, Frederic J, et~al.
+\newblock {Jupyter Notebooks-a publishing format for reproducible computational workflows}.
+\newblock In: Loizides F, Schmidt B, editors. Positioning and Power in Academic Publishing: Players, Agents and Agendas; 2016. p. 87--90.
+
+\bibitem{gu2008sk}
+Gu N, Hu H, Vervaeke K, Storm JF.
+\newblock {SK (K$_{Ca}$2) channels do not control somatic excitability in CA1 pyramidal neurons but can be activated by dendritic excitatory synapses and regulate their impact}.
+\newblock Journal of Neurophysiology. 2008;100(5):2589--2604.
+
+\bibitem{disterhoft1996calcium}
+Disterhoft JF, Thompson LT, Moyer JR, Mogul DJ.
+\newblock Calcium-dependent afterhyperpolarization and learning in young and aging hippocampus.
+\newblock {Life Sciences}. 1996;59(5):413--420.
+
+\bibitem{storm1989after}
+Storm JF.
+\newblock {An after-hyperpolarization of medium duration in rat hippocampal pyramidal cells}.
+\newblock Journal of Physiology. 1989;409(1):171--190.
+
+\bibitem{matthews2009fast}
+Matthews EA, Linardakis JM, Disterhoft JF.
+\newblock {The fast and slow afterhyperpolarizations are differentially modulated in hippocampal neurons by aging and learning}.
+\newblock Journal of Neuroscience. 2009;29(15):4750--4755.
+
+\bibitem{su2001extracellular}
+Su H, Alroy G, Kirson ED, Yaari Y.
+\newblock {Extracellular calcium modulates persistent sodium current-dependent burst-firing in hippocampal pyramidal neurons}.
+\newblock Journal of Neuroscience. 2001;21(12):4173--4182.
+
+\bibitem{chen2005transitional}
+Chen S, Yue C, Yaari Y.
+\newblock {A transitional period of {\Ca}-dependent spike afterdepolarization and bursting in developing rat CA1 pyramidal cells}.
+\newblock {Journal of Physiology}. 2005;567(1):79--93.
+
+\bibitem{jensen1994variant}
+Jensen MS, Azouz R, Yaari Y.
+\newblock {Variant firing patterns in rat hippocampal pyramidal cells modulated by extracellular potassium}.
+\newblock Journal of Neurophysiology. 1994;71(3):831--839.
+
+\bibitem{golomb2006contribution}
+Golomb D, Yue C, Yaari Y.
+\newblock {Contribution of persistent {\Na} current and M-type {\K} current to somatic bursting in CA1 pyramidal cells: combined experimental and modeling study}.
+\newblock Journal of Neurophysiology. 2006;96(4):1912--1926.
+
+\bibitem{manseau2017tuning}
+Manseau F, Williams S.
+\newblock Tuning in the hippocampal theta band in vitro: methodologies for recording from the isolated rodent septohippocampal circuit.
+\newblock Journal of Visualized Experiments. 2017;126:e55851.
+
+\bibitem{bland2005heterogeneity}
+Bland BH, Konopacki J, Dyck R.
+\newblock Heterogeneity among hippocampal pyramidal neurons revealed by their relation to theta-band oscillation and synchrony.
+\newblock Experimental Neurology. 2005;195(2):458--474.
+
+\bibitem{huh2016excitatory}
+Huh CYL, Amilhon B, Ferguson KA, Manseau F, Torres-Platas SG, Peach JP, et~al.
+\newblock {Excitatory inputs determine phase-locking strength and spike-timing of CA1 stratum oriens/alveus parvalbumin and somatostatin interneurons during intrinsically generated hippocampal theta rhythm}.
+\newblock Journal of Neuroscience. 2016;36(25):6605--6622.
+
+\bibitem{colom1987state}
+Colom LV, Bland BH.
+\newblock State-dependent spike train dynamics of hippocampal formation neurons: evidence for theta-on and theta-off cells.
+\newblock Brain Research. 1987;422(2):277--286.
+
+\bibitem{geiller2017segregated}
+Geiller T, Royer S, Choi JS.
+\newblock {Segregated cell populations enable distinct parallel encoding within the radial axis of the CA1 pyramidal layer}.
+\newblock Experimental Neurobiology. 2017;26(1):1--10.
+
+\bibitem{lee2014parvalbumin}
+Lee SH, Marchionni I, Bezaire M, Varga C, Danielson N, Lovett-Barron M, et~al.
+\newblock Parvalbumin-positive basket cells differentiate among hippocampal pyramidal cells.
+\newblock Neuron. 2014;82(5):1129--1144.
+
+\bibitem{steriade1998dynamic}
+Steriade M, Timofeev I, D{\"u}rm{\"u}ller N, Grenier F.
+\newblock {Dynamic properties of corticothalamic neurons and local cortical interneurons generating fast rhythmic (30--40 Hz) spike bursts}.
+\newblock Journal of Neurophysiology. 1998;79(1):483--490.
+
+\bibitem{frere2018alzheimer}
+Frere S, Slutsky I.
+\newblock Alzheimer’s disease: from firing instability to homeostasis network collapse.
+\newblock Neuron. 2018;97(1):32--58.
+
+\bibitem{sinnegger2004isoform}
+Sinnegger-Brauns MJ, Hetzenauer A, Huber IG, Renstr{\"o}m E, Wietzorrek G, Berjukov S, et~al.
+\newblock {Isoform-specific regulation of mood behavior and pancreatic $\beta$ cell and cardiovascular function by L-type {\Ca} channels}.
+\newblock The Journal of Clinical Investigation. 2004;113(10):1430--1439.
+
+\bibitem{zanos2015sex}
+Zanos P, Bhat S, Terrillion CE, Smith RJ, Tonelli LH, Gould TD.
+\newblock {Sex-dependent modulation of age-related cognitive decline by the L-type calcium channel gene \textit{Cacna1c} (Ca$_v$1.2)}.
+\newblock European Journal of Neuroscience. 2015;42(8):2499--2507.
+
+\bibitem{davare2003increased}
+Davare MA, Hell JW.
+\newblock {Increased phosphorylation of the neuronal L-type {\Ca} channel Ca$_v$1.2 during aging}.
+\newblock Proceedings of the National Academy of Sciences. 2003;100(26):16018--16023.
+
+\bibitem{moosmang2005role}
+Moosmang S, Haider N, Klugbauer N, Adelsberger H, Langwieser N, M{\"u}ller J, et~al.
+\newblock {Role of hippocampal Ca$_v$1.2 {\Ca} channels in NMDA receptor-independent synaptic plasticity and spatial memory}.
+\newblock Journal of Neuroscience. 2005;25(43):9883--9892.
+
+\bibitem{bowden2001somatic}
+Bowden SEH, Fletcher S, Loane DJ, Marrion NV.
+\newblock {Somatic colocalization of rat SK1 and D class (Ca$_v$1.2) L-type calcium channels in rat CA1 hippocampal pyramidal neurons}.
+\newblock Journal of Neuroscience. 2001;21(20):RC175 1--6.
+
+\bibitem{veng2003age}
+Veng LM, Mesches MH, Browning MD.
+\newblock {Age-related working memory impairment is correlated with increases in the L-type calcium channel protein $\alpha_{1D}$ (Ca$_v$1.3) in area CA1 of the hippocampus and both are ameliorated by chronic nimodipine treatment}.
+\newblock Molecular Brain Research. 2003;110(2):193--202.
+
+\bibitem{gamelli2011deletion}
+Gamelli AE, McKinney BC, White JA, Murphy GG.
+\newblock {Deletion of the L-type calcium channel Ca$_v$1.3 but not Ca$_v$1.2 results in a diminished sAHP in mouse CA1 pyramidal neurons}.
+\newblock Hippocampus. 2011;21(2):133--141.
+
+\bibitem{thibault2007expansion}
+Thibault O, Gant JC, Landfield PW.
+\newblock {Expansion of the calcium hypothesis of brain aging and Alzheimer's disease: minding the store}.
+\newblock Aging Cell. 2007;6(3):307--317.
+
+\bibitem{toescu2010calcium}
+Toescu EC, Vreugdenhil M.
+\newblock Calcium and normal brain ageing.
+\newblock Cell Calcium. 2010;47(2):158--164.
+
+\bibitem{markaki2005modelling}
+Markaki M, Orphanoudakis S, Poirazi P.
+\newblock {Modelling reduced excitability in aged CA1 neurons as a calcium-dependent process}.
+\newblock Neurocomputing. 2005;65:305--314.
+
+\bibitem{smith2000effect}
+Smith AC, Gerrard JL, Barnes CA, McNaughton BL.
+\newblock Effect of age on burst firing characteristics of rat hippocampal pyramidal cells.
+\newblock NeuroReport. 2000;11(17):3865--3871.
+
+\bibitem{sagheddu2024cognitive}
+Sagheddu C, Stojanovic T, Kouhnavardi S, Savchenko A, Hussein AM, Pistis M, et~al.
+\newblock Cognitive performance in aged rats is associated with differences in distinctive neuronal populations in the ventral tegmental area and altered synaptic plasticity in the hippocampus.
+\newblock Frontiers in Aging Neuroscience. 2024;16:1357347.
+
+\bibitem{daoudal2003long}
+Daoudal G, Debanne D.
+\newblock Long-term plasticity of intrinsic excitability: learning rules and mechanisms.
+\newblock Learning \& Memory. 2003;10(6):456--465.
+
+\bibitem{konstantinovic2019effects}
+Konstantinovi{\'c} LM, Filipovi{\'c} SR.
+\newblock Effects of near-infrared low-level laser stimulation on neuronal excitability.
+\newblock In: Hamblin MR, Huang YY, editors. Photobiomodulation in the Brain: Low-Level Laser (Light) Therapy in Neurology and Neuroscience. Academic Press; 2019. p. 233--240.
+
+\bibitem{potier1993age}
+Potier B, Lamour Y, Dutar P.
+\newblock Age-related alterations in the properties of hippocampal pyramidal neurons among rat strains.
+\newblock Neurobiology of Aging. 1993;14(1):17--25.
+
+\end{thebibliography}
+
+
+
+\end{document}
